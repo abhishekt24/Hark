@@ -36,19 +36,19 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MyViewHolder> 
                 Intent intent = new Intent(context, ListClipsActivity.class);
                 switch (position) {
                     case 0:
-                        intent.putExtra("levels", "1 2");
+                        intent.putExtra("difficulty", "Rookie");
                         break;
                     case 1:
-                        intent.putExtra("levels", "3 4");
+                        intent.putExtra("difficulty", "Beginner");
                         break;
                     case 2:
-                        intent.putExtra("levels", "5 6 7");
+                        intent.putExtra("difficulty", "Intermediate");
                         break;
                     case 3:
-                        intent.putExtra("levels", "8 9");
+                        intent.putExtra("difficulty", "Advanced");
                         break;
                     case 4:
-                        intent.putExtra("levels", "10");
+                        intent.putExtra("difficulty", "Rap");
                         break;
                 }
                 context.startActivity(intent);

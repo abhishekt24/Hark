@@ -53,10 +53,10 @@ public abstract class ClipDatabase extends RoomDatabase {
         protected Void doInBackground(Void... voids) {
             clipsDao.deleteAll();
             clipsDao.insertAll(
-                    new Clips("RzqC2CtsKE0", "How Americans live", "1", "Russian/American", "F", "1:20 3:30"),
-                    new Clips("arj7oStGLkU", "Inside the mind of a master procrastinator", "2", "American", "M", "2:10 2:50"),
-                    new Clips("dfnCAmr569k", "Taylor Swift - End Game ft. Ed Sheeran, Future", "9", "British", "M", "2:10 2:50"),
-                    new Clips("TQMbvJNRpLE", "How to Achieve Your Most Ambitious Goals", "4", "US", "M", "1:17 1:32 1:32 1:45 4:18 4:27 4:27 4:40 4:40 4:50 4:50 5:06 16:57 17:43"));
+                    new Clips("RzqC2CtsKE0", "How Americans live", "1", "Rookie", "Russian/American", "F", "1:20 3:30"),
+                    new Clips("arj7oStGLkU", "Inside the mind of a master procrastinator", "2", "Beginner", "American", "M", "2:10 2:50"),
+                    new Clips("dfnCAmr569k", "Taylor Swift - End Game ft. Ed Sheeran, Future", "9", "Rap", "British", "M", "2:10 2:50"),
+                    new Clips("TQMbvJNRpLE", "How to Achieve Your Most Ambitious Goals", "4", "Advanced", "US", "M", "1:17 1:32 1:32 1:45 4:18 4:27 4:27 4:40 4:40 4:50 4:50 5:06 16:57 17:43"));
             return null;
         }
     }

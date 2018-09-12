@@ -20,16 +20,19 @@ public class Clips {
     @ColumnInfo
     private String level;
     @ColumnInfo
+    private String difficulty;
+    @ColumnInfo
     private String accent;
     @ColumnInfo
     private String gender;
     @ColumnInfo
     private String stopPoints;
 
-    public Clips(String clipID, String title, String level, String accent, String gender, String stopPoints) {
+    public Clips(String clipID, String title, String level, String difficulty, String accent, String gender, String stopPoints) {
         this.clipID = clipID;
         this.title = title;
         this.level = level;
+        this.difficulty = difficulty;
         this.accent = accent;
         this.gender = gender;
         this.stopPoints = stopPoints;
@@ -58,6 +61,14 @@ public class Clips {
 
     public void setLevel(String level) {
         this.level = level;
+    }
+
+    public String getDifficulty() {
+        return difficulty;
+    }
+
+    public void setDifficulty(String difficulty) {
+        this.difficulty = difficulty;
     }
 
     public String getAccent() {

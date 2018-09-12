@@ -17,20 +17,24 @@ public class ListClipsActivity extends AppCompatActivity {
     public RecyclerView recyclerViewMainClips;
     public ClipsAdapter clipsAdapter;
     public ClipsViewModel clipsViewModel;
+    String difficultyStr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_clips);
+
+        difficultyStr = getIntent().getStringExtra("difficulty");
+
         recyclerViewMainClips = findViewById(R.id.recyclerview_main_clips);
         clipsAdapter = new ClipsAdapter(this);
         recyclerViewMainClips.setLayoutManager(new LinearLayoutManager(this));
         recyclerViewMainClips.setAdapter(clipsAdapter);
 
-        clipsViewModel = ViewModelProviders.of(this).get(ClipsViewModel.class);
-        clipsViewModel.getClipsLiveData().observe(ListClipsActivity.this, new Observer<List<Clips>>() {  //If we don't use live data, we need to execute queries in Async task in ViewModel
+        clipsViewModel = ViewModelProviders.of(this, new ClipsViewModelFactory(this.getApplication(), difficultyStr)).get(ClipsViewModel.class);
+        clipsViewModel.getClipsLiveDataByLevel().observe(ListClipsActivity.this, new Observer<List<Clips>>() {  //If we don't use live data, we need to execute queries in Async task in ViewModel
             @Override
-            //even after that we get wierd probles like - recheck
+            //even after that we get weird problems like - recheck
             public void onChanged(@Nullable List<Clips> clipsList) {
                 clipsAdapter.setClipsList(clipsList);
             }
