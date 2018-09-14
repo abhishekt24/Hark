@@ -52,6 +52,8 @@ public class EvaluateClipActivity extends YouTubeBaseActivity {
     Button plusTenButton;
     Button pausePlayButton;
 
+    Button evaluateButton;
+
     private Handler mHandler = null;
     YouTubePlayer mPlayer;
 
@@ -69,6 +71,9 @@ public class EvaluateClipActivity extends YouTubeBaseActivity {
         pausePlayButton = findViewById(R.id.button_pause_play);
 
         timeTextView = findViewById(R.id.textview_time);
+
+        usrTranscript = findViewById(R.id.edittext_transcript);
+        evaluateButton = findViewById(R.id.button_evaluate);
 
         videoId = getIntent().getStringExtra("id");
         String stopPoints = getIntent().getStringExtra("stop_points");
@@ -99,7 +104,6 @@ public class EvaluateClipActivity extends YouTubeBaseActivity {
                     public void onInitializationSuccess(final YouTubePlayer.Provider provider,
                                                         final YouTubePlayer youTubePlayer, boolean b) {
                         if (youTubePlayer == null) return;
-                        ;
                         mPlayer = youTubePlayer;
                         displayCurrentTime();
                         youTubePlayer.setPlayerStyle(YouTubePlayer.PlayerStyle.MINIMAL);
@@ -147,6 +151,12 @@ public class EvaluateClipActivity extends YouTubeBaseActivity {
         if (null == mPlayer) return;
         String formattedTime = formatTime(mPlayer.getCurrentTimeMillis());
         timeTextView.setText(formattedTime);
+        if (mPlayer.getCurrentTimeMillis() < (int) startTime.getTime()) {
+            mPlayer.seekToMillis((int) startTime.getTime());
+        } else if (mPlayer.getCurrentTimeMillis() > (int) stopTime.getTime()) {
+            mPlayer.seekToMillis((int) stopTime.getTime());
+            mPlayer.pause();
+        }
     }
 
     private String formatTime(int millis) {
@@ -222,7 +232,7 @@ public class EvaluateClipActivity extends YouTubeBaseActivity {
         //layout change
 
         score = findViewById(R.id.textview_accuracy);
-        usrTranscript = findViewById(R.id.edittext_transcript);
+
         textviewUsrTranscript = findViewById(R.id.textview_usr_transcript);
         textviewOriginalTranscript = findViewById(R.id.textview_original_transcript);
         linearlayoutCompareTranscripts = findViewById(R.id.linearlayout_compare_transcripts);
@@ -234,7 +244,8 @@ public class EvaluateClipActivity extends YouTubeBaseActivity {
         textviewOriginalTranscript.setText(originalTranscript);
         textviewUsrTranscript.setText(usrTranscript.getText().toString());
         linearlayoutCompareTranscripts.setVisibility(View.VISIBLE);
-
+        mPlayer.pause();
+        evaluateButton.setVisibility(View.GONE);
     }
 
     public void DownloadFiles() {

@@ -1,6 +1,5 @@
 package com.techiespace.projects.hark;
 
-import android.util.Log;
 import android.util.Xml;
 
 import org.xmlpull.v1.XmlPullParser;
@@ -72,8 +71,6 @@ public class ParseXML {
         String durStr = parser.getAttributeValue(null, "dur");
         int startTimeXML = (int) (float) (Float.valueOf(startTimeStr));
         int stopTimeXML = (int) (Float.valueOf(startTimeStr) + Float.valueOf(durStr));
-        Log.e("test", "startTime: " + (int) (float) (Float.valueOf(startTimeStr)));
-        Log.e("test", "stopTime: " + (int) (Float.valueOf(startTimeStr) + Float.valueOf(durStr)));
 
         String text = "";
         if (parser.next() == XmlPullParser.TEXT) {
@@ -82,7 +79,7 @@ public class ParseXML {
         }
 
         if (startTimeXML >= (startTime.getTime() / 1000) && stopTimeXML <= (stopTime.getTime() / 1000)) {
-            finalTranscript += text;
+            finalTranscript += text + " ";
         }
         parser.require(XmlPullParser.END_TAG, ns, "text");
         return text;

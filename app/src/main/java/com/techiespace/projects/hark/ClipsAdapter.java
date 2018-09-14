@@ -46,7 +46,7 @@ public class ClipsAdapter extends RecyclerView.Adapter<ClipsAdapter.MyViewHolder
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, EvaluateClipActivity.class);
+                Intent intent = new Intent(context, SectionsActivity.class);
                 intent.putExtra("id", clipsList.get(holder.getAdapterPosition()).getClipID());
                 intent.putExtra("stop_points", clipsList.get(holder.getAdapterPosition()).getStopPoints());
                 context.startActivity(intent);
