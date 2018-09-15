@@ -56,7 +56,6 @@ public class EvaluateClip {
         originalTranscript = originalTranscript.replaceAll("[^a-zA-Z0-9]", "");
         userTranscript = userTranscript.replaceAll("[^a-zA-Z0-9]", "");
         double score = similarity(originalTranscript, userTranscript);
-        return score * 100;
-
+        return ((double) Math.round(score * 100 * 10)) / 10;
     }
 }

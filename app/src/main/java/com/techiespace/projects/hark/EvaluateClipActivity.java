@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.youtube.player.YouTubeBaseActivity;
 import com.google.android.youtube.player.YouTubeInitializationResult;
@@ -56,6 +57,7 @@ public class EvaluateClipActivity extends YouTubeBaseActivity {
 
     private Handler mHandler = null;
     YouTubePlayer mPlayer;
+    Toast toast;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -94,7 +96,7 @@ public class EvaluateClipActivity extends YouTubeBaseActivity {
         mHandler = new Handler();
 
         //Download transcript
-        new DownloadFileFromURL().execute("http://video.google.com/timedtext?lang=en&v=" + videoId);
+        new DownloadFileFromURL().execute();
     }
 
     public void playVideo(final String videoId, YouTubePlayerView youTubePlayerView) {
@@ -229,16 +231,38 @@ public class EvaluateClipActivity extends YouTubeBaseActivity {
     };
 
     public void evaluate(View view) {
+        //TODO: implement better logic for checking internet connectivity for slow connections.
+        if (originalTranscript == null || originalTranscript.trim().isEmpty()) {
+            evaluateButton.setText("Please wait...");
+            evaluateButton.setEnabled(false);
+            new DownloadFileFromURL().execute();
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    if (originalTranscript == null || originalTranscript.trim().isEmpty()) {
+                        Toast.makeText(EvaluateClipActivity.this, "Couldn't fetch transcript.\nIs your internet working?", Toast.LENGTH_LONG).show();
+                        evaluateButton.setText("Evaluate");
+                        evaluateButton.setEnabled(true);
+                    } else {
+                        evaluateFun();
+                    }
+                }
+            }, 5000);
+        }
+        if (originalTranscript != null && !originalTranscript.trim().isEmpty())
+            evaluateFun();
+    }
+
+    public void evaluateFun() {
         //layout change
-
         score = findViewById(R.id.textview_accuracy);
-
         textviewUsrTranscript = findViewById(R.id.textview_usr_transcript);
         textviewOriginalTranscript = findViewById(R.id.textview_original_transcript);
         linearlayoutCompareTranscripts = findViewById(R.id.linearlayout_compare_transcripts);
 
+
         EvaluateClip evaluateClip = new EvaluateClip(originalTranscript, usrTranscript.getText().toString());
-        score.setText("Accuracy: " + evaluateClip.evaluate());
+        score.setText("Accuracy: " + evaluateClip.evaluate() + "%");
 
         parentForEditTextView.removeView(usrTranscript);
         textviewOriginalTranscript.setText(originalTranscript);
@@ -259,7 +283,7 @@ public class EvaluateClipActivity extends YouTubeBaseActivity {
             while ((line = r.readLine()) != null) {
                 originalXMLTranscript += line + "\n";
             }
-            Log.e("test", "DownloadFiles: " + originalXMLTranscript);
+            Log.e("test", "Download Files: " + originalXMLTranscript);
 
         } catch (MalformedURLException mue) {
             Log.e("SYNC getUpdate", "malformed url error", mue);
