@@ -25,10 +25,6 @@ import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.TimeZone;
 
 public class EvaluateClipActivity extends YouTubeBaseActivity {
 
@@ -38,8 +34,8 @@ public class EvaluateClipActivity extends YouTubeBaseActivity {
     TextView textviewUsrTranscript;
     TextView textviewOriginalTranscript;
     LinearLayout linearlayoutCompareTranscripts;
-    Date startTime;
-    Date stopTime;
+    int startTime;
+    int stopTime;
     TextView timeTextView;
     String originalXMLTranscript = "";
     String originalTranscript = "";
@@ -57,7 +53,6 @@ public class EvaluateClipActivity extends YouTubeBaseActivity {
 
     private Handler mHandler = null;
     YouTubePlayer mPlayer;
-    Toast toast;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -80,15 +75,10 @@ public class EvaluateClipActivity extends YouTubeBaseActivity {
         videoId = getIntent().getStringExtra("id");
         String stopPoints = getIntent().getStringExtra("stop_points");
         String[] stopPointsArr = stopPoints.split(" ");
-        instruction.setText("Type what you hear from " + stopPointsArr[0] + " to " + stopPointsArr[1]);
-        SimpleDateFormat sdf = new SimpleDateFormat("mm:ss");
-        sdf.setTimeZone(TimeZone.getTimeZone("GMT"));
-        try {
-            startTime = sdf.parse(stopPointsArr[0]);
-            stopTime = sdf.parse(stopPointsArr[1]);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+        String[] simpleStopPointArr = convMilliToHuman(stopPointsArr);
+        instruction.setText("Type what you hear from " + simpleStopPointArr[0] + " to " + simpleStopPointArr[1]);
+        startTime = Integer.parseInt(stopPointsArr[0]);
+        stopTime = Integer.parseInt(stopPointsArr[1]);
         final YouTubePlayerView youtubePlayerView = findViewById(R.id.youtubePlayerView);
 
         playVideo(videoId, youtubePlayerView);
@@ -97,6 +87,20 @@ public class EvaluateClipActivity extends YouTubeBaseActivity {
 
         //Download transcript
         new DownloadFileFromURL().execute();
+    }
+
+    public String[] convMilliToHuman(String[] stopPointsArr) {
+        float startMilli = Float.parseFloat(stopPointsArr[0]);
+        int startMin = (int) startMilli / (60 * 1000);
+        int startSec = (int) (startMilli / 1000) % 60;
+        float stopMilli = Float.parseFloat(stopPointsArr[1]);
+        int stopMin = (int) stopMilli / (60 * 1000);
+        int stopSec = (int) (stopMilli / 1000) % 60;
+        String startMinStr = startMin < 10 ? "0" + startMin : "" + startMin;
+        String stopMinStr = stopMin < 10 ? "" + "0" + stopMin : "" + stopMin;
+        String startSecStr = startSec < 10 ? "0" + startSec : "" + startSec;
+        String stopSecStr = stopSec < 10 ? "0" + stopSec : "" + stopSec;
+        return new String[]{startMinStr + ":" + startSecStr, stopMinStr + ":" + stopSecStr};
     }
 
     public void playVideo(final String videoId, YouTubePlayerView youTubePlayerView) {
@@ -110,7 +114,7 @@ public class EvaluateClipActivity extends YouTubeBaseActivity {
                         displayCurrentTime();
                         youTubePlayer.setPlayerStyle(YouTubePlayer.PlayerStyle.MINIMAL);
                         //youTubePlayer.cueVideo(videoId, stopArr[0]);
-                        youTubePlayer.loadVideo(videoId, (int) startTime.getTime());
+                        youTubePlayer.loadVideo(videoId, startTime);
                         //youTubePlayer.play();
                         youTubePlayer.setPlayerStateChangeListener(mPlayerStateChangeListener);
                         youTubePlayer.setPlaybackEventListener(mPlaybackEventListener);
@@ -153,10 +157,10 @@ public class EvaluateClipActivity extends YouTubeBaseActivity {
         if (null == mPlayer) return;
         String formattedTime = formatTime(mPlayer.getCurrentTimeMillis());
         timeTextView.setText(formattedTime);
-        if (mPlayer.getCurrentTimeMillis() < (int) startTime.getTime()) {
-            mPlayer.seekToMillis((int) startTime.getTime());
-        } else if (mPlayer.getCurrentTimeMillis() > (int) stopTime.getTime()) {
-            mPlayer.seekToMillis((int) stopTime.getTime());
+        if (mPlayer.getCurrentTimeMillis() < startTime) {
+            mPlayer.seekToMillis(startTime);
+        } else if (mPlayer.getCurrentTimeMillis() > stopTime) {
+            mPlayer.seekToMillis(stopTime);
             mPlayer.pause();
         }
     }

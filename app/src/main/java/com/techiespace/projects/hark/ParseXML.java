@@ -8,17 +8,16 @@ import org.xmlpull.v1.XmlPullParserException;
 import java.io.IOException;
 import java.io.StringReader;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class ParseXML {
     private String str;
-    private Date startTime;
-    private Date stopTime;
+    private int startTime;
+    private int stopTime;
     private String finalTranscript = "";
     private static final String ns = null;
 
-    ParseXML(String str, Date startTime, Date stopTime) {
+    ParseXML(String str, int startTime, int stopTime) {
         this.str = str;
         this.startTime = startTime;
         this.stopTime = stopTime;
@@ -78,7 +77,7 @@ public class ParseXML {
             parser.nextTag();
         }
 
-        if (startTimeXML >= (startTime.getTime() / 1000) && stopTimeXML <= (stopTime.getTime() / 1000)) {
+        if (startTimeXML >= (startTime / 1000) && stopTimeXML <= (stopTime / 1000)) {
             finalTranscript += text + " ";
         }
         parser.require(XmlPullParser.END_TAG, ns, "text");

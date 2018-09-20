@@ -53,6 +53,11 @@ public abstract class ClipDatabase extends RoomDatabase {
         protected Void doInBackground(Void... voids) {
             clipsDao.deleteAll();
 
+            //new
+            //Rookie L1,2
+            clipsDao.insertAll(
+                    new Clips("arj7oStGLkU", "Inside the mind of a master procrastinator", "2", "Rookie", "US?", "M", "12000 19000 20000 34000 35000 50000 235000 250000 375000 402000 410000 449000 756000 834000"));
+
             //Rookie
             /*clipsDao.insertAll(
                     new Clips("RzqC2CtsKE0", "How Americans live", "1", "Rookie", "Russian/American", "F", "1:20 3:30"),
@@ -61,7 +66,7 @@ public abstract class ClipDatabase extends RoomDatabase {
                     new Clips("TQMbvJNRpLE", "How to Achieve Your Most Ambitious Goals", "4", "Advanced", "US", "M", "1:17 1:32 1:32 1:45 4:18 4:27 4:27 4:40 4:40 4:50 4:50 5:06 16:57 17:43")
             );*/
             //Rookie L1,2
-            clipsDao.insertAll(
+            /*clipsDao.insertAll(
                     new Clips("arj7oStGLkU", "Inside the mind of a master procrastinator", "2", "Rookie", "US?", "M", "00:12 00:19 00:20 00:34 00:35 00:50 03:55 04:10 06:15 06:42 06:50 07:29 12:36 13:54"),
                     new Clips("v5FL9VTBZzQ", "The power of creative constraints", "2", "Rookie", "Unknown", "M", "0:08 0:17 0:17 0:22 0:22 0:30 0:30 0:44 0:44 1:02 1:52 3:22 4:02 4:48")
             );
@@ -81,7 +86,7 @@ public abstract class ClipDatabase extends RoomDatabase {
             //Rap Song L10
             clipsDao.insertAll(
                     new Clips("DVwaPJifStA", "Rap God Remix", "10", "Rap", "?", "M", "1:21 1:24 1:24 1:27 1:33 1:37 01:37 01:42 02:29 2:22 2:57 03:04 05:14 05:32")
-            );
+            );*/
             return null;
         }
     }
