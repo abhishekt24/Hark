@@ -11,6 +11,7 @@ public class SectionsActivity extends AppCompatActivity {
     String videoId;
     String[] stopPointsArr;
     Intent intent;
+    String originalXMLTranscript = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,9 +19,11 @@ public class SectionsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sections);
         videoId = getIntent().getStringExtra("id");
         stopPoints = getIntent().getStringExtra("stop_points");
+        originalXMLTranscript = getIntent().getStringExtra("xml_transcript");
         stopPointsArr = stopPoints.split(" ");
         intent = new Intent(this, EvaluateClipActivity.class);
         intent.putExtra("id", videoId);
+        intent.putExtra("xml_transcript", originalXMLTranscript);
     }
 
     public void onClickSection1(View view) {

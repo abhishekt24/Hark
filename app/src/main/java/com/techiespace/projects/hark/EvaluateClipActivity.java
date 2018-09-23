@@ -29,7 +29,8 @@ import java.net.URLConnection;
 public class EvaluateClipActivity extends YouTubeBaseActivity {
 
     TextView score;
-    TextView instruction;
+    TextView instructionTime;
+    TextView instructionWords;
     EditText usrTranscript;
     TextView textviewUsrTranscript;
     TextView textviewOriginalTranscript;
@@ -58,7 +59,8 @@ public class EvaluateClipActivity extends YouTubeBaseActivity {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_evaluate_clip);
-        instruction = findViewById(R.id.textview_instruction);
+        instructionTime = findViewById(R.id.textview_instruction);
+        instructionWords = findViewById(R.id.textview_instruction_words);
         parentForEditTextView = findViewById(R.id.linearlayout_parent_for_edittextview);
 
         minusTenButton = findViewById(R.id.button_time_minus_ten);
@@ -76,7 +78,7 @@ public class EvaluateClipActivity extends YouTubeBaseActivity {
         String stopPoints = getIntent().getStringExtra("stop_points");
         String[] stopPointsArr = stopPoints.split(" ");
         String[] simpleStopPointArr = convMilliToHuman(stopPointsArr);
-        instruction.setText("Type what you hear from " + simpleStopPointArr[0] + " to " + simpleStopPointArr[1]);
+        instructionTime.setText("Type what you hear from " + simpleStopPointArr[0] + " to " + simpleStopPointArr[1]);
         startTime = Integer.parseInt(stopPointsArr[0]);
         stopTime = Integer.parseInt(stopPointsArr[1]);
         final YouTubePlayerView youtubePlayerView = findViewById(R.id.youtubePlayerView);
@@ -85,8 +87,19 @@ public class EvaluateClipActivity extends YouTubeBaseActivity {
 
         mHandler = new Handler();
 
+        originalXMLTranscript = getIntent().getStringExtra("xml_transcript");
+        ParseXML parseXML = new ParseXML(originalXMLTranscript, startTime, stopTime);
+        try {
+            originalTranscript = parseXML.parseXML();
+            String[] originalTranscriptWordsArr = originalTranscript.split(" ");
+            instructionWords.setText(originalTranscriptWordsArr[0] + " ... " + originalTranscriptWordsArr[originalTranscriptWordsArr.length - 1]);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (XmlPullParserException e) {
+            e.printStackTrace();
+        }
         //Download transcript
-        new DownloadFileFromURL().execute();
+        //new DownloadFileFromURL().execute();
     }
 
     public String[] convMilliToHuman(String[] stopPointsArr) {
@@ -239,7 +252,7 @@ public class EvaluateClipActivity extends YouTubeBaseActivity {
         if (originalTranscript == null || originalTranscript.trim().isEmpty()) {
             evaluateButton.setText("Please wait...");
             evaluateButton.setEnabled(false);
-            new DownloadFileFromURL().execute();
+            //new DownloadFileFromURL().execute();
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {

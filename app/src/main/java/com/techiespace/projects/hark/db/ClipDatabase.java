@@ -59,6 +59,10 @@ public abstract class ClipDatabase extends RoomDatabase {
                     new Clips("arj7oStGLkU", "Inside the mind of a master procrastinator", "2", "Rookie", "US?", "M", "12000 19000 20000 34000 35000 50000 235000 250000 375000 402000 410000 449000 756000 834000"));
 
             //Rookie
+            clipsDao.insertAll(
+                    new Clips("VlHiEN1zTKI", "How China is (and isn't) fighting pollution", "2", "Rookie", "US/China", "F", "13720 24776 24800 32400 38920 44896 47160 56136 58440 66336 66360 72215 78400 101376")
+
+            );
             /*clipsDao.insertAll(
                     new Clips("RzqC2CtsKE0", "How Americans live", "1", "Rookie", "Russian/American", "F", "1:20 3:30"),
                     new Clips("arj7oStGLkU", "Inside the mind of a master procrastinator", "2", "Beginner", "American", "M", "2:10 2:50"),

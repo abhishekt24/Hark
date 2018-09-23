@@ -1,23 +1,36 @@
 package com.techiespace.projects.hark;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.techiespace.projects.hark.databinding.ClipRowBinding;
 import com.techiespace.projects.hark.db.ClipDatabase;
 import com.techiespace.projects.hark.db.Clips;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.List;
 
 public class ClipsAdapter extends RecyclerView.Adapter<ClipsAdapter.MyViewHolder> implements View.OnClickListener {
 
     private Context context;
     List<Clips> clipsList;
+
+    String originalXMLTranscript = "";
+    private ProgressDialog pDialog;
 
     public ClipsAdapter(Context context) {
         this.context = context;
@@ -46,10 +59,11 @@ public class ClipsAdapter extends RecyclerView.Adapter<ClipsAdapter.MyViewHolder
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, SectionsActivity.class);
-                intent.putExtra("id", clipsList.get(holder.getAdapterPosition()).getClipID());
-                intent.putExtra("stop_points", clipsList.get(holder.getAdapterPosition()).getStopPoints());
-                context.startActivity(intent);
+                new DownloadFileFromURL(context,
+                        clipsList.get(holder.getAdapterPosition()).getClipID(),
+                        clipsList.get(holder.getAdapterPosition()).getStopPoints()).execute("http://video.google.com/timedtext?lang=en&v=",
+                        clipsList.get(holder.getAdapterPosition()).getClipID(),
+                        clipsList.get(holder.getAdapterPosition()).getStopPoints());
             }
         });
     }
@@ -78,6 +92,77 @@ public class ClipsAdapter extends RecyclerView.Adapter<ClipsAdapter.MyViewHolder
         public void bind(Clips clips) {
             binding.setVariable(BR.clipList, clips);
             binding.executePendingBindings();
+        }
+    }
+
+    public void DownloadFiles(String url) {
+
+        try {
+            URL u = new URL(url);
+            URLConnection dataConnection = u.openConnection();
+            BufferedReader r = new BufferedReader(
+                    new InputStreamReader(dataConnection.getInputStream()));
+            String line;
+            while ((line = r.readLine()) != null) {
+                originalXMLTranscript += line + "\n";
+            }
+            Log.e("test", "Download Files: " + originalXMLTranscript);
+
+        } catch (MalformedURLException mue) {
+            Log.e("SYNC getUpdate", "malformed url error", mue);
+        } catch (IOException ioe) {
+            Log.e("SYNC getUpdate", "io error", ioe);
+        } catch (SecurityException se) {
+            Log.e("SYNC getUpdate", "security error", se);
+        }
+    }
+
+    class DownloadFileFromURL extends AsyncTask<String, String, String> {
+
+        //Context context;
+        String id;
+        String stopPoints;
+
+        private DownloadFileFromURL(Context context, String id, String stopPoints) {
+            //this.context = context.getApplicationContext();
+            this.id = id;
+            this.stopPoints = stopPoints;
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            System.out.println("Starting download");
+
+            pDialog = new ProgressDialog(context);
+            pDialog.setMessage("Loading... Please wait...");
+            pDialog.setIndeterminate(false);
+            pDialog.setCancelable(false);
+            pDialog.show();
+        }
+
+        @Override
+        protected String doInBackground(String... strings) {
+            originalXMLTranscript = ""; //reset string when coming out of another video and going into another
+            DownloadFiles(strings[0] + strings[1]);
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String file_url) {
+            System.out.println("Downloaded");
+            pDialog.dismiss();
+            if (originalXMLTranscript.equals(""))
+                Toast.makeText(context, "Unable to retrieve data from Internet", Toast.LENGTH_SHORT).show();
+            else {
+                if (!originalXMLTranscript.equals("")) {
+                    Intent intent = new Intent(context, SectionsActivity.class);
+                    intent.putExtra("id", id);
+                    intent.putExtra("stop_points", stopPoints);
+                    intent.putExtra("xml_transcript", originalXMLTranscript);
+                    context.startActivity(intent);
+                }
+            }
         }
     }
 }
