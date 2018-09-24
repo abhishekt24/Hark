@@ -133,11 +133,10 @@ public class ClipsAdapter extends RecyclerView.Adapter<ClipsAdapter.MyViewHolder
         protected void onPreExecute() {
             super.onPreExecute();
             System.out.println("Starting download");
-
             pDialog = new ProgressDialog(context);
             pDialog.setMessage("Loading... Please wait...");
             pDialog.setIndeterminate(false);
-            pDialog.setCancelable(false);
+            pDialog.setCancelable(false);   //Warning: irritates user on slow internet connection(no option to retry).
             pDialog.show();
         }
 

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -47,7 +46,7 @@
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
                     android:layout_weight="1"
-                    android:text="-10"
+                    android:background="@drawable/ic_replay_10_black_24dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/youtubePlayerView" />
 
@@ -59,7 +58,7 @@
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
                     android:layout_weight="1"
-                    android:text="-5"
+                    android:background="@drawable/ic_replay_5_black_24dp"
                     app:layout_constraintStart_toEndOf="@+id/button_time_minus_ten"
                     app:layout_constraintTop_toBottomOf="@+id/youtubePlayerView" />
 
@@ -81,7 +80,7 @@
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
                     android:layout_weight="1"
-                    android:text="+5"
+                    android:background="@drawable/ic_forward_5_black_24dp"
                     app:layout_constraintStart_toEndOf="@+id/button_pause_play"
                     app:layout_constraintTop_toBottomOf="@+id/youtubePlayerView" />
 
@@ -93,7 +92,7 @@
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
                     android:layout_weight="1"
-                    android:text="+10"
+                    android:background="@drawable/ic_forward_10_black_24dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/button_time_plus_five"
                     app:layout_constraintTop_toBottomOf="@+id/youtubePlayerView" />
@@ -113,7 +112,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textview_instruction_words">
+                app:layout_constraintTop_toBottomOf="@+id/imageview_pro_tip">
 
                 <EditText
                     android:id="@+id/edittext_transcript"
@@ -193,6 +192,8 @@
                 android:layout_marginTop="8dp"
                 android:onClick="evaluate"
                 android:text="Evaluate"
+                android:background="@color/colorPrimaryDark"
+                android:textColor="@color/primary_light"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.501"
@@ -239,12 +240,36 @@
                 android:layout_marginRight="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
-                android:text="TextView"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.501"
+                android:text="Error! Please restart the app."
+                android:textColor="@android:color/holo_red_dark"
+                android:textStyle="italic"
+                app:layout_constraintEnd_toStartOf="@+id/imageview_pro_tip"
+                app:layout_constraintStart_toEndOf="@+id/imageview_instructions"
+                app:layout_constraintTop_toBottomOf="@+id/textview_instruction" />
+
+            <ImageView
+                android:id="@+id/imageview_instructions"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
+                android:onClick="showInstructions"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textview_instruction"
-                tools:text="a ... b" />
+                android:src="@android:drawable/ic_menu_info_details"
+                android:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/imageview_pro_tip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:onClick="showTip"
+                android:src="@android:drawable/btn_star"
+                android:visibility="visible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textview_instruction" />
 
         </android.support.constraint.ConstraintLayout>
     </ScrollView>

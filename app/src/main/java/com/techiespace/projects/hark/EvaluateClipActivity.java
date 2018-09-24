@@ -1,11 +1,13 @@
 package com.techiespace.projects.hark;
 
+import android.app.Dialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -309,6 +311,38 @@ public class EvaluateClipActivity extends YouTubeBaseActivity {
         } catch (SecurityException se) {
             Log.e("SYNC getUpdate", "security error", se);
         }
+    }
+
+    public void showTip(View view) {
+        final Dialog tipDialog = new Dialog(this);
+        tipDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        tipDialog.setCancelable(true);
+        tipDialog.setCanceledOnTouchOutside(true);
+        tipDialog.setContentView(R.layout.protip_layout);
+        tipDialog.show();
+        Button cancelDialogButton = tipDialog.findViewById(R.id.button_cancel);
+        cancelDialogButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                tipDialog.cancel();
+            }
+        });
+    }
+
+    public void showInstructions(View view) {
+        final Dialog instDialog = new Dialog(this);
+        instDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        instDialog.setCancelable(true);
+        instDialog.setCanceledOnTouchOutside(true);
+        instDialog.setContentView(R.layout.instructions_layout);
+        instDialog.show();
+        Button cancelDialogButton = instDialog.findViewById(R.id.button_cancel);
+        cancelDialogButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                instDialog.cancel();
+            }
+        });
     }
 
     class DownloadFileFromURL extends AsyncTask<String, String, String> {
