@@ -1,13 +1,13 @@
 <resources>
     <string name="app_name">Hark</string>
-    <string name="protip_step1">Select the \'Enter what you hear here\' box and you\'ll see the keyboard.</string>
+    <string name="protip_step1"><![CDATA[<b>Step 1</b>: Select the \'Enter what you hear here\' box and you\'ll see the keyboard.]]></string>
     <string name="protip_step2"><![CDATA[<b>Step 2</b>: Play the video for a few seconds (about a sentence) remember it and then pause.]]></string>
     <string name="protip_step3"><![CDATA[<b>Step 3</b>: Touch the microphone icon on the keyboard and wait for it to initialize.]]></string>
     <string name="protip_step4"><![CDATA[<b>Step 4</b>: Once the keyboard says \'Speak now\' say-back the sentence you heard and wait for a second or two.]]></string>
     <string name="protip_step5"><![CDATA[<b>Step 5</b>: Repeat until you finish the specified time.]]></string>
-    <string name="instruction1"><![CDATA[Type what you hear from <i>start_time</i> to <i>end_time</i>.]]></string>
-    <string name="instruction2"><![CDATA[The first word of your answer should be <i>start_word</i> and last should be <i>end_word</i>.]]></string>
-    <string name="instruction3">Tap on the video to toggle play/pause.</string>
-    <string name="instruction4">Use the [img src=ic_replay_10_black_24dp/][img src=ic_replay_5_black_24dp/][img src=ic_forward_5_black_24dp/][img src=ic_forward_10_black_24dp/] buttons to navigate through the video.</string>
-    <string name="instruction5">Evaluate to check your accuracy.</string>
+    <string name="instruction1"><![CDATA[• Type what you hear from <i>start_time</i> to <i>end_time</i>.]]></string>
+    <string name="instruction2"><![CDATA[• The first word of your answer should be <i>start_word</i> and last should be <i>end_word</i>.]]></string>
+    <string name="instruction3">• Tap on the video to toggle play/pause.</string>
+    <string name="instruction4">• Use the [img src=ic_replay_10_black_24dp/][img src=ic_replay_5_black_24dp/][img src=ic_forward_5_black_24dp/][img src=ic_forward_10_black_24dp/] buttons to navigate through the video.</string>
+    <string name="instruction5">• Evaluate to check your accuracy.</string>
 </resources>
