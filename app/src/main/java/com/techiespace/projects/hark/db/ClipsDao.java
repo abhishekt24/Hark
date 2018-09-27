@@ -22,4 +22,12 @@ public interface ClipsDao {
     @Query("DELETE FROM Clips")
     void deleteAll();
 
+    @Query("UPDATE Clips SET accuracy = :acc WHERE clipID = :id")
+    int updateAcc(String acc, String id);
+
+    @Query("SELECT accuracy FROM Clips WHERE clipID = :id LIMIT 1")
+    String findAccById(String id);
+
+    @Query("SELECT * FROM Clips WHERE clipID LIKE :id")
+    LiveData<List<Clips>> findLiveAccById(String id);
 }

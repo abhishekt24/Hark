@@ -56,11 +56,11 @@ public abstract class ClipDatabase extends RoomDatabase {
             //new
             //Rookie L1,2
             clipsDao.insertAll(
-                    new Clips("arj7oStGLkU", "Inside the mind of a master procrastinator", "2", "Rookie", "US?", "M", "12000 19000 20000 34000 35000 50000 235000 250000 375000 402000 410000 449000 756000 834000"));
+                    new Clips("arj7oStGLkU", "Inside the mind of a master procrastinator", "2", "Rookie", "US?", "M", "12000 19000 20000 34000 35000 50000 235000 250000 375000 402000 410000 449000 756000 834000", "0 0 0 0 0 0 0 0"));
 
             //Rookie
             clipsDao.insertAll(
-                    new Clips("VlHiEN1zTKI", "How China is (and isn't) fighting pollution", "2", "Rookie", "US/China", "F", "13720 24776 24800 32400 38920 44896 47160 56136 58440 66336 66360 72215 78400 101376")
+                    new Clips("VlHiEN1zTKI", "How China is (and isn't) fighting pollution", "2", "Rookie", "US/China", "F", "13720 24776 24800 32400 38920 44896 47160 56136 58440 66336 66360 72215 78400 101376", "0 0 0 0 0 0 0 0")
 
             );
             /*clipsDao.insertAll(

@@ -18,6 +18,8 @@ import com.google.android.youtube.player.YouTubeBaseActivity;
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerView;
+import com.techiespace.projects.hark.db.ClipDatabase;
+import com.techiespace.projects.hark.db.ClipsDao;
 
 import org.xmlpull.v1.XmlPullParserException;
 
@@ -27,6 +29,9 @@ import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.Arrays;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
 
 public class EvaluateClipActivity extends YouTubeBaseActivity {
 
@@ -43,6 +48,7 @@ public class EvaluateClipActivity extends YouTubeBaseActivity {
     String originalXMLTranscript = "";
     String originalTranscript = "";
     String videoId;
+    private static final Executor executor = Executors.newFixedThreadPool(2);
 
     LinearLayout parentForEditTextView;
 
@@ -56,6 +62,7 @@ public class EvaluateClipActivity extends YouTubeBaseActivity {
 
     private Handler mHandler = null;
     YouTubePlayer mPlayer;
+    int sectionId;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -77,6 +84,7 @@ public class EvaluateClipActivity extends YouTubeBaseActivity {
         evaluateButton = findViewById(R.id.button_evaluate);
 
         videoId = getIntent().getStringExtra("id");
+        sectionId = getIntent().getIntExtra("sec_id", 0);
         String stopPoints = getIntent().getStringExtra("stop_points");
         String[] stopPointsArr = stopPoints.split(" ");
         String[] simpleStopPointArr = convMilliToHuman(stopPointsArr);
@@ -279,9 +287,9 @@ public class EvaluateClipActivity extends YouTubeBaseActivity {
         textviewOriginalTranscript = findViewById(R.id.textview_original_transcript);
         linearlayoutCompareTranscripts = findViewById(R.id.linearlayout_compare_transcripts);
 
-
         EvaluateClip evaluateClip = new EvaluateClip(originalTranscript, usrTranscript.getText().toString());
-        score.setText("Accuracy: " + evaluateClip.evaluate() + "%");
+        final String accuracy = String.valueOf(evaluateClip.evaluate());
+        score.setText("Accuracy: " + accuracy + "%");
 
         parentForEditTextView.removeView(usrTranscript);
         textviewOriginalTranscript.setText(originalTranscript);
@@ -289,6 +297,18 @@ public class EvaluateClipActivity extends YouTubeBaseActivity {
         linearlayoutCompareTranscripts.setVisibility(View.VISIBLE);
         mPlayer.pause();
         evaluateButton.setVisibility(View.GONE);
+        executor.execute(new Runnable() {
+            @Override
+            public void run() {
+                ClipsDao clipsDao = ClipDatabase.getDatabase(EvaluateClipActivity.this).clipsDao();
+                String[] accArr = clipsDao.findAccById(videoId).split(" ");
+                accArr[sectionId] = accuracy;
+                String updateAcc = Arrays.toString(accArr)
+                        .replaceAll(",", "")
+                        .replaceAll("[\\[\\]]", "");
+                clipsDao.updateAcc(updateAcc, videoId);
+            }
+        });
     }
 
     public void DownloadFiles() {

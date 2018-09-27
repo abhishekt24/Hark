@@ -27,8 +27,10 @@ public class Clips {
     private String gender;
     @ColumnInfo
     private String stopPoints;
+    @ColumnInfo
+    private String accuracy;
 
-    public Clips(String clipID, String title, String level, String difficulty, String accent, String gender, String stopPoints) {
+    public Clips(String clipID, String title, String level, String difficulty, String accent, String gender, String stopPoints, String accuracy) {
         this.clipID = clipID;
         this.title = title;
         this.level = level;
@@ -36,6 +38,7 @@ public class Clips {
         this.accent = accent;
         this.gender = gender;
         this.stopPoints = stopPoints;
+        this.accuracy = accuracy;
     }
 
     @NonNull
@@ -93,5 +96,13 @@ public class Clips {
 
     public void setStopPoints(String stopPoints) {
         this.stopPoints = stopPoints;
+    }
+
+    public String getAccuracy() {
+        return accuracy;
+    }
+
+    public void setAccuracy(String accuracy) {
+        this.accuracy = accuracy;
     }
 }

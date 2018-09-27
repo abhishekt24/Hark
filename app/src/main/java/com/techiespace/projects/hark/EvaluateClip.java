@@ -1,12 +1,19 @@
 package com.techiespace.projects.hark;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class EvaluateClip {
     String originalTranscript;
     String userTranscript;
+    String originalWords[];
+    String userWords[];
 
     public EvaluateClip(String originalTranscript, String userTranscript) {
         this.originalTranscript = originalTranscript;
         this.userTranscript = userTranscript;
+        originalWords = originalTranscript.split("\\s+");
+        userWords = userTranscript.split("\\s+");
     }
 
     public static double similarity(String s1, String s2) {
@@ -53,8 +60,23 @@ public class EvaluateClip {
     }
 
     double evaluate() {
+        int flag = 0;
+        Set<String> missedWords = new HashSet<String>();
+
         originalTranscript = originalTranscript.replaceAll("[^a-zA-Z0-9]", "");
         userTranscript = userTranscript.replaceAll("[^a-zA-Z0-9]", "");
+
+        for (String temp : originalWords) {
+            flag = 0;
+            for (String temp1 : userWords) {
+                if (temp.equals(temp1))
+                    flag = 1;
+            }
+            if (flag == 0) {
+                missedWords.add(temp);
+            }
+        }
+
         double score = similarity(originalTranscript, userTranscript);
         return ((double) Math.round(score * 100 * 10)) / 10;
     }
