@@ -25,62 +25,84 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="1dp"
+            android:layout_marginTop="1dp"
             android:text="Instead of typing everything, you can use the speech-to-text feature inbuilt in your keyboard.\n" />
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/ic_launcher_round" />
-
         <com.techiespace.projects.hark.HTMLTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="1dp"
+            android:layout_marginTop="4dp"
             android:text="@string/protip_step1" />
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/ic_launcher" />
-
         <com.techiespace.projects.hark.HTMLTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="1dp"
+            android:layout_marginTop="4dp"
             android:text="@string/protip_step2" />
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/ic_launcher_round" />
+            android:layout_marginBottom="1dp"
+            android:layout_marginTop="1dp"
+            android:adjustViewBounds="true"
+            android:src="@drawable/protip_1_edittext_image" />
 
         <com.techiespace.projects.hark.HTMLTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="1dp"
+            android:layout_marginTop="4dp"
             android:text="@string/protip_step3" />
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/ic_launcher_round" />
+            android:layout_marginBottom="1dp"
+            android:layout_marginTop="1dp"
+            android:adjustViewBounds="true"
+            android:src="@drawable/protip_2_record" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="1dp"
+            android:layout_marginTop="1dp"
+            android:adjustViewBounds="true"
+            android:src="@drawable/protip_3_init_image" />
 
         <com.techiespace.projects.hark.HTMLTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="1dp"
+            android:layout_marginTop="4dp"
             android:text="@string/protip_step4" />
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/ic_launcher" />
-
-        <com.techiespace.projects.hark.HTMLTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/protip_step5" />
+            android:layout_marginBottom="1dp"
+            android:layout_marginTop="1dp"
+            android:adjustViewBounds="true"
+            android:src="@drawable/protip_4_speaknow" />
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/ic_launcher" />
+            android:layout_marginBottom="1dp"
+            android:layout_marginTop="1dp"
+            android:adjustViewBounds="true"
+            android:src="@drawable/protip_5_listening_image" />
+
+        <com.techiespace.projects.hark.HTMLTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="1dp"
+            android:layout_marginTop="4dp"
+            android:text="@string/protip_step5" />
 
         <Button
             android:id="@+id/button_cancel"

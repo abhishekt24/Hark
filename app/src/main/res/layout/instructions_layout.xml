@@ -24,53 +24,77 @@
         <com.techiespace.projects.hark.HTMLTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="1dp"
+            android:layout_marginTop="1dp"
             android:text="@string/instruction1" />
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/ic_launcher_round" />
+            android:layout_marginBottom="1dp"
+            android:layout_marginTop="1dp"
+            android:adjustViewBounds="true"
+            android:src="@drawable/inst_1_time_image" />
 
         <com.techiespace.projects.hark.HTMLTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="1dp"
+            android:layout_marginTop="4dp"
             android:text="@string/instruction2" />
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/ic_launcher" />
+            android:layout_marginBottom="1dp"
+            android:layout_marginTop="1dp"
+            android:adjustViewBounds="true"
+            android:src="@drawable/inst_2_word_image" />
 
         <com.techiespace.projects.hark.HTMLTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="1dp"
+            android:layout_marginTop="4dp"
             android:text="@string/instruction3" />
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/ic_launcher_round" />
+            android:layout_marginBottom="1dp"
+            android:layout_marginTop="1dp"
+            android:adjustViewBounds="true"
+            android:src="@drawable/inst_3_play_pause_image" />
 
         <com.techiespace.projects.hark.HTMLTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="1dp"
+            android:layout_marginTop="4dp"
             android:text="@string/instruction4" />
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="1dp"
+            android:layout_marginTop="1dp"
             android:adjustViewBounds="true"
-            android:src="@drawable/image_navigate" />
+            android:src="@drawable/inst_4_navigate" />
 
         <com.techiespace.projects.hark.HTMLTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="1dp"
+            android:layout_marginTop="4dp"
             android:text="@string/instruction5" />
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/ic_launcher" />
+            android:layout_marginBottom="1dp"
+            android:layout_marginTop="1dp"
+            android:adjustViewBounds="true"
+            android:src="@drawable/inst_5_evaluate" />
 
         <Button
             android:id="@+id/button_cancel"
