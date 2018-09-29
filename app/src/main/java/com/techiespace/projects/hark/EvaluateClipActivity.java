@@ -76,7 +76,6 @@ public class EvaluateClipActivity extends YouTubeBaseActivity {
         minusFiveButton = findViewById(R.id.button_time_minus_five);
         plusFiveButton = findViewById(R.id.button_time_plus_five);
         plusTenButton = findViewById(R.id.button_time_plus_ten);
-        pausePlayButton = findViewById(R.id.button_pause_play);
 
         timeTextView = findViewById(R.id.textview_time);
 

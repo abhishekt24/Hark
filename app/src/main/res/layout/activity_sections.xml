@@ -47,7 +47,6 @@
                     android:foreground="?android:attr/selectableItemBackground"
                     android:onClick="onClickSection1"
                     app:cardBackgroundColor="@color/primary_light">
-
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -57,10 +56,22 @@
                         android:text="1"
                         android:textSize="144sp" />
 
+                    <ProgressBar
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:max="100"
+                        android:progress='@{sectionsViewModel.getAccuracyLiveData[0] != null ? (int)Double.parseDouble(sectionsViewModel.getAccuracyLiveData[0].getAccuracy().split(" ")[1]) : 0}'
+                        android:progressTint="@color/colorPrimary" />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text='@{sectionsViewModel.getAccuracyLiveData[0].getAccuracy().split(" ")[1]}' />
+                        android:layout_gravity="right"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginRight="4dp"
+                        android:text='@{sectionsViewModel.getAccuracyLiveData[0].getAccuracy().split(" ")[1]+ " %"}' />
                 </android.support.v7.widget.CardView>
 
                 <android.support.v7.widget.CardView
@@ -83,10 +94,22 @@
                         android:text="2"
                         android:textSize="144sp" />
 
+                    <ProgressBar
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:max="100"
+                        android:progress='@{sectionsViewModel.getAccuracyLiveData[0] != null ? (int)Double.parseDouble(sectionsViewModel.getAccuracyLiveData[0].getAccuracy().split(" ")[2]) : 0}'
+                        android:progressTint="@color/colorPrimary" />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text='@{sectionsViewModel.getAccuracyLiveData[0].getAccuracy().split(" ")[2]}' />
+                        android:layout_gravity="right"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginRight="4dp"
+                        android:text='@{sectionsViewModel.getAccuracyLiveData[0].getAccuracy().split(" ")[2]+ " %"}' />
                 </android.support.v7.widget.CardView>
 
                 <android.support.v7.widget.CardView
@@ -109,10 +132,22 @@
                         android:text="3"
                         android:textSize="144sp" />
 
+                    <ProgressBar
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:max="100"
+                        android:progress='@{sectionsViewModel.getAccuracyLiveData[0] != null ? (int)Double.parseDouble(sectionsViewModel.getAccuracyLiveData[0].getAccuracy().split(" ")[3]) : 0}'
+                        android:progressTint="@color/colorPrimary" />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text='@{sectionsViewModel.getAccuracyLiveData[0].getAccuracy().split(" ")[3]}' />
+                        android:layout_gravity="right"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginRight="4dp"
+                        android:text='@{sectionsViewModel.getAccuracyLiveData[0].getAccuracy().split(" ")[3]+ " %"}' />
                 </android.support.v7.widget.CardView>
 
                 <android.support.v7.widget.CardView
@@ -135,10 +170,22 @@
                         android:text="4"
                         android:textSize="144sp" />
 
+                    <ProgressBar
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:max="100"
+                        android:progress='@{sectionsViewModel.getAccuracyLiveData[0] != null ? (int)Double.parseDouble(sectionsViewModel.getAccuracyLiveData[0].getAccuracy().split(" ")[4]) : 0}'
+                        android:progressTint="@color/colorPrimary" />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text='@{sectionsViewModel.getAccuracyLiveData[0].getAccuracy().split(" ")[4]}' />
+                        android:layout_gravity="right"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginRight="4dp"
+                        android:text='@{sectionsViewModel.getAccuracyLiveData[0].getAccuracy().split(" ")[4]+ " %"}' />
                 </android.support.v7.widget.CardView>
 
                 <android.support.v7.widget.CardView
@@ -161,10 +208,22 @@
                         android:text="5"
                         android:textSize="144sp" />
 
+                    <ProgressBar
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:max="100"
+                        android:progress='@{sectionsViewModel.getAccuracyLiveData[0] != null ? (int)Double.parseDouble(sectionsViewModel.getAccuracyLiveData[0].getAccuracy().split(" ")[5]) : 0}'
+                        android:progressTint="@color/colorPrimary" />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text='@{sectionsViewModel.getAccuracyLiveData[0].getAccuracy().split(" ")[5]}' />
+                        android:layout_gravity="right"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginRight="4dp"
+                        android:text='@{sectionsViewModel.getAccuracyLiveData[0].getAccuracy().split(" ")[5]+ " %"}' />
                 </android.support.v7.widget.CardView>
 
                 <android.support.v7.widget.CardView
@@ -187,10 +246,22 @@
                         android:text="6"
                         android:textSize="144sp" />
 
+                    <ProgressBar
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:max="100"
+                        android:progress='@{sectionsViewModel.getAccuracyLiveData[0] != null ? (int)Double.parseDouble(sectionsViewModel.getAccuracyLiveData[0].getAccuracy().split(" ")[6]) : 0}'
+                        android:progressTint="@color/colorPrimary" />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text='@{sectionsViewModel.getAccuracyLiveData[0].getAccuracy().split(" ")[6]}' />
+                        android:layout_gravity="right"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginRight="4dp"
+                        android:text='@{sectionsViewModel.getAccuracyLiveData[0].getAccuracy().split(" ")[6]+ " %"}' />
                 </android.support.v7.widget.CardView>
 
             </GridLayout>
@@ -215,11 +286,22 @@
                     android:text="Test"
                     android:textSize="72sp" />
 
+                <ProgressBar
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:max="100"
+                    android:progress='@{sectionsViewModel.getAccuracyLiveData[0] != null ? (int)Double.parseDouble(sectionsViewModel.getAccuracyLiveData[0].getAccuracy().split(" ")[7]) : 0}'
+                    android:progressTint="@color/colorPrimary" />
                 <TextView
-                    android:id="@+id/textview_accuracy"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text='@{sectionsViewModel.getAccuracyLiveData[0].getAccuracy().split(" ")[7]}' />
+                    android:layout_gravity="right"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="4dp"
+                    android:text='@{sectionsViewModel.getAccuracyLiveData[0].getAccuracy().split(" ")[7]+ " %"}' />
             </android.support.v7.widget.CardView>
         </LinearLayout>
     </ScrollView>
