@@ -5,6 +5,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
+import android.text.Html;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -30,6 +31,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
@@ -287,13 +290,55 @@ public class EvaluateClipActivity extends YouTubeBaseActivity {
         textviewOriginalTranscript = findViewById(R.id.textview_original_transcript);
         linearlayoutCompareTranscripts = findViewById(R.id.linearlayout_compare_transcripts);
 
+        Set<String> missedWords = new HashSet<String>();
+        Set<String> wrongWords = new HashSet<String>();
+
         EvaluateClip evaluateClip = new EvaluateClip(originalTranscript, usrTranscript.getText().toString());
-        final String accuracy = String.valueOf(evaluateClip.evaluate());
+        final String accuracy = String.valueOf(evaluateClip.evaluate(missedWords,wrongWords));
         score.setText("Accuracy: " + accuracy + "%");
 
+        // Highlight original script
+        String arrayOfOrginal[]=originalTranscript.split("[^a-zA-Z0-9']+");
+        String arrayOfUser[]=usrTranscript.getText().toString().split("[^a-zA-Z0-9']+");
+
+
+        String colouredOriginalText="";
+        String colouredUserText="";
+        int flag=0;
+        for (String temp:arrayOfOrginal){
+            flag=0;
+            System.out.println("\n heyyyy   "+temp);
+            for (String missing:missedWords){
+                if(missing.equals(temp)){
+                    colouredOriginalText+="<font color=\"#E72A02\">"+temp + "</font>"+" ";
+                    flag=1;
+                    break;
+                }
+
+            }
+            if(flag==0)
+                colouredOriginalText+="<font color=\"#04760C\">"+temp + "</font>"+" ";
+        }
+
+        for(String temp:arrayOfUser){
+            flag=0;
+            System.out.println("\n heyyyy   "+temp);
+            for(String wrong:wrongWords){
+                if(temp.equals(wrong)){
+                    colouredUserText+="<font color=\"#E72A02\">"+temp + "</font>"+" ";
+                    flag=1;
+                    break;
+                }
+            }
+            if(flag==0){
+                colouredUserText+=temp +" ";
+            }
+        }
+
+
         parentForEditTextView.removeView(usrTranscript);
-        textviewOriginalTranscript.setText(originalTranscript);
-        textviewUsrTranscript.setText(usrTranscript.getText().toString());
+        textviewOriginalTranscript.setText(Html.fromHtml(colouredOriginalText));
+        textviewUsrTranscript.setText(Html.fromHtml(colouredUserText));
         linearlayoutCompareTranscripts.setVisibility(View.VISIBLE);
         mPlayer.pause();
         evaluateButton.setVisibility(View.GONE);
