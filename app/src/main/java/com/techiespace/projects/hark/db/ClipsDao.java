@@ -13,8 +13,8 @@ public interface ClipsDao {
     @Insert(onConflict = OnConflictStrategy.ROLLBACK)
     void insertAll(Clips... clips);
 
-    @Query("SELECT * FROM Clips")
-    LiveData<List<Clips>> getAllClipsLiveData();
+/*    @Query("SELECT * FROM Clips")
+    LiveData<List<Clips>> getAllClipsLiveData();*/
 
     @Query("SELECT * FROM Clips WHERE difficulty = :difficulty")
     LiveData<List<Clips>> getClipsLiveDataByLevel(String difficulty);

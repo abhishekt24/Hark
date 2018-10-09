@@ -12,7 +12,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        String[] listItems = {"Rookie", "Beginner", "Intermediate", "Advanced", "Rap Songs"};
+        String[] listItems = {"Rookie", "Beginner", "Intermediate", "Pro", "Rap"};
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mainAdapter = new MainAdapter(this, listItems);

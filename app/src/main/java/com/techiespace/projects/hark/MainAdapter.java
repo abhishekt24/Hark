@@ -2,6 +2,7 @@ package com.techiespace.projects.hark;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,8 +28,17 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MyViewHolder> 
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, final int position) {
-        holder.textView.setText(mainList[position]);
-
+        holder.textviewLevelName.setText(mainList[position]);
+        if (position == 0)
+            holder.cardViewLevel.setBackgroundResource(R.drawable.ready);
+        else if (position == 1)
+            holder.cardViewLevel.setBackgroundResource(R.drawable.get);
+        else if (position == 2)
+            holder.cardViewLevel.setBackgroundResource(R.drawable.set);
+        else if (position == 3)
+            holder.cardViewLevel.setBackgroundResource(R.drawable.go);
+        else if (position == 4)
+            holder.cardViewLevel.setBackgroundResource(R.drawable.rap_run);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
 
@@ -67,11 +77,13 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MyViewHolder> 
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
-        public TextView textView;
+        public TextView textviewLevelName;
+        public CardView cardViewLevel;
 
         public MyViewHolder(View view) {
             super(view);
-            textView = view.findViewById(R.id.textview_main);
+            textviewLevelName = view.findViewById(R.id.textview_levelname);
+            cardViewLevel = view.findViewById(R.id.cardview_level);
         }
     }
 }

@@ -67,6 +67,7 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:textColor="@color/secondary_text"
+                    android:fontFamily="sans-serif-black"
                     android:textStyle="bold"
                     android:text="00:00" />
 
@@ -185,6 +186,7 @@
                 android:layout_marginTop="8dp"
                 android:onClick="evaluate"
                 android:text="Evaluate"
+                android:fontFamily="sans-serif-black"
                 android:background="@color/colorPrimaryDark"
                 android:textColor="@color/primary_light"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -219,6 +221,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:text="Type what you hear from "
+                android:fontFamily="sans-serif-black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.502"
                 app:layout_constraintStart_toStartOf="parent"
@@ -234,6 +237,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:text="Error! Please restart the app."
+                android:fontFamily="sans-serif-black"
                 android:textColor="@android:color/holo_red_dark"
                 android:textStyle="italic"
                 app:layout_constraintEnd_toStartOf="@+id/imageview_pro_tip"

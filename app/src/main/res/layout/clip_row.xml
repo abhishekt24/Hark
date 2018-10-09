@@ -36,7 +36,8 @@
                         android:layout_weight="1"
                         android:padding="8dp"
                         android:text="@{clipList.title}"
-                        android:textSize="18sp" />
+                        android:fontFamily="cursive"
+                        android:textSize="24sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -52,7 +53,10 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:padding="8dp"
-                        android:text="@{clipList.accent}" />
+                        android:fontFamily="cursive"
+                        android:text="@{clipList.accent}"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/textview_gender"
@@ -60,7 +64,10 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:padding="8dp"
-                        android:text="@{clipList.gender}" />
+                        android:fontFamily="cursive"
+                        android:text="@{clipList.gender}"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/textview_difficulty"
@@ -68,7 +75,10 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:padding="8dp"
-                        android:text="@{clipList.level}" />
+                        android:fontFamily="cursive"
+                        android:text="@{clipList.level}"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
             </LinearLayout>
 

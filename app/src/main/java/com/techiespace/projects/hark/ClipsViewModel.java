@@ -20,13 +20,13 @@ public class ClipsViewModel extends AndroidViewModel {
     public ClipsViewModel(@NonNull final Application application, String level) {
         super(application);
         clipsDao = ClipDatabase.getDatabase(application).clipsDao();
-        clipsLiveData = clipsDao.getAllClipsLiveData();
+        //clipsLiveData = clipsDao.getAllClipsLiveData();
         clipsLiveDataByLevel = clipsDao.getClipsLiveDataByLevel(level);
     }
 
-    public LiveData<List<Clips>> getClipsLiveData() {
-        return clipsLiveData;
-    }
+//    public LiveData<List<Clips>> getClipsLiveData() {
+//        return clipsLiveData;
+//    }
 
     public LiveData<List<Clips>> getClipsLiveDataByLevel() {
         return clipsLiveDataByLevel;

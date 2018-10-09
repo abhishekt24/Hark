@@ -18,8 +18,10 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Pro Tip\n"
+            android:paddingBottom="10dp"
+            android:text="Pro Tip"
             android:textAlignment="center"
+            android:textSize="20dp"
             android:textStyle="bold" />
 
         <TextView
@@ -27,6 +29,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="1dp"
             android:layout_marginTop="1dp"
+            android:fontFamily="sans-serif-black"
             android:text="Instead of typing everything, you can use the speech-to-text feature inbuilt in your keyboard.\n" />
 
         <com.techiespace.projects.hark.HTMLTextView
@@ -34,6 +37,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="1dp"
             android:layout_marginTop="4dp"
+            android:fontFamily="sans-serif-black"
             android:text="@string/protip_step1" />
 
         <com.techiespace.projects.hark.HTMLTextView
@@ -41,6 +45,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="1dp"
             android:layout_marginTop="4dp"
+            android:fontFamily="sans-serif-black"
             android:text="@string/protip_step2" />
 
         <ImageView
@@ -56,6 +61,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="1dp"
             android:layout_marginTop="4dp"
+            android:fontFamily="sans-serif-black"
             android:text="@string/protip_step3" />
 
         <ImageView
@@ -79,6 +85,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="1dp"
             android:layout_marginTop="4dp"
+            android:fontFamily="sans-serif-black"
             android:text="@string/protip_step4" />
 
         <ImageView
@@ -102,6 +109,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="1dp"
             android:layout_marginTop="4dp"
+            android:fontFamily="sans-serif-black"
             android:text="@string/protip_step5" />
 
         <Button
@@ -113,6 +121,7 @@
             android:gravity="right"
             android:onClick="cancelDialog"
             android:text="Cool!"
+            android:fontFamily="sans-serif-black"
             android:textColor="@color/colorAccent" />
 
     </LinearLayout>
