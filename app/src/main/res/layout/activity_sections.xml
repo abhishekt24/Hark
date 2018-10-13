@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
@@ -23,7 +22,7 @@
             android:id="@+id/ll"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#fcfcfc"
+            android:background="@color/background"
             android:gravity="center"
             android:orientation="vertical"
             android:padding="10dp">
@@ -44,8 +43,7 @@
                     android:clickable="true"
                     android:focusable="true"
                     android:foreground="?android:attr/selectableItemBackground"
-                    android:onClick="onClickSection1"
-                    app:cardBackgroundColor="@color/primary_light">
+                    android:onClick="onClickSection1">
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -82,8 +80,7 @@
                     android:clickable="true"
                     android:focusable="true"
                     android:foreground="?android:attr/selectableItemBackground"
-                    android:onClick="onClickSection2"
-                    app:cardBackgroundColor="@color/primary_light">
+                    android:onClick="onClickSection2">
 
                     <TextView
                         android:layout_width="match_parent"
@@ -121,8 +118,7 @@
                     android:clickable="true"
                     android:focusable="true"
                     android:foreground="?android:attr/selectableItemBackground"
-                    android:onClick="onClickSection3"
-                    app:cardBackgroundColor="@color/primary_light">
+                    android:onClick="onClickSection3">
 
                     <TextView
                         android:layout_width="match_parent"
@@ -160,8 +156,7 @@
                     android:clickable="true"
                     android:focusable="true"
                     android:foreground="?android:attr/selectableItemBackground"
-                    android:onClick="onClickSection4"
-                    app:cardBackgroundColor="@color/primary_light">
+                    android:onClick="onClickSection4">
 
                     <TextView
                         android:layout_width="match_parent"
@@ -199,8 +194,7 @@
                     android:clickable="true"
                     android:focusable="true"
                     android:foreground="?android:attr/selectableItemBackground"
-                    android:onClick="onClickSection5"
-                    app:cardBackgroundColor="@color/primary_light">
+                    android:onClick="onClickSection5">
 
                     <TextView
                         android:layout_width="match_parent"
@@ -238,8 +232,7 @@
                     android:clickable="true"
                     android:focusable="true"
                     android:foreground="?android:attr/selectableItemBackground"
-                    android:onClick="onClickSection6"
-                    app:cardBackgroundColor="@color/primary_light">
+                    android:onClick="onClickSection6">
 
                     <TextView
                         android:layout_width="match_parent"
@@ -258,8 +251,7 @@
                         android:layout_centerHorizontal="true"
                         android:layout_centerVertical="true"
                         android:max="100"
-                        android:progress='@{sectionsViewModel.getAccuracyLiveData[0] != null ? (int)Double.parseDouble(sectionsViewModel.getAccuracyLiveData[0].getAccuracy().split(" ")[6]) : 0}'
-                        android:progressTint="@color/colorPrimary" />
+                        android:progress='@{sectionsViewModel.getAccuracyLiveData[0] != null ? (int)Double.parseDouble(sectionsViewModel.getAccuracyLiveData[0].getAccuracy().split(" ")[6]) : 0}' />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -282,8 +274,7 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:foreground="?android:attr/selectableItemBackground"
-                android:onClick="onClickSectionTest"
-                app:cardBackgroundColor="@color/primary_light">
+                android:onClick="onClickSectionTest">
 
                 <TextView
                     android:layout_width="match_parent"
