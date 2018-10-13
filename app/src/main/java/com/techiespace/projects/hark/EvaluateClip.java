@@ -12,8 +12,8 @@ public class EvaluateClip {
     public EvaluateClip(String originalTranscript, String userTranscript) {
         this.originalTranscript = originalTranscript;
         this.userTranscript = userTranscript;
-        originalWords = originalTranscript.split("\\s+");
-        userWords = userTranscript.split("\\s+");
+        originalWords = originalTranscript.split("[^a-zA-Z0-9']+");
+        userWords = userTranscript.split("[^a-zA-Z0-9']+");
     }
 
     public static double similarity(String s1, String s2) {
@@ -59,13 +59,14 @@ public class EvaluateClip {
         return costs[s2.length()];
     }
 
-    double evaluate() {
+    double evaluate(Set<String> missedWords,Set<String> wrongWords) {
         int flag = 0;
-        Set<String> missedWords = new HashSet<String>();
 
-        originalTranscript = originalTranscript.replaceAll("[^a-zA-Z0-9]", "");
+
+        originalTranscript =
         userTranscript = userTranscript.replaceAll("[^a-zA-Z0-9]", "");
 
+        System.out.println("missing");
         for (String temp : originalWords) {
             flag = 0;
             for (String temp1 : userWords) {
@@ -73,10 +74,23 @@ public class EvaluateClip {
                     flag = 1;
             }
             if (flag == 0) {
+                System.out.print(temp+"   ");
                 missedWords.add(temp);
             }
         }
 
+        System.out.println("wrong ");
+        for(String temp:userWords){
+            flag=0;
+            for(String temp1:originalWords){
+                if(temp.equals(temp1))
+                    flag=1;
+            }
+            if(flag==0){
+                System.out.print(temp+" ");
+                wrongWords.add(temp);
+            }
+        }
         double score = similarity(originalTranscript, userTranscript);
         return ((double) Math.round(score * 100 * 10)) / 10;
     }
