@@ -79,7 +79,6 @@ public class EvaluateClipActivity extends YouTubeBaseActivity {
         minusFiveButton = findViewById(R.id.button_time_minus_five);
         plusFiveButton = findViewById(R.id.button_time_plus_five);
         plusTenButton = findViewById(R.id.button_time_plus_ten);
-        pausePlayButton = findViewById(R.id.button_pause_play);
 
         timeTextView = findViewById(R.id.textview_time);
 
@@ -299,7 +298,7 @@ public class EvaluateClipActivity extends YouTubeBaseActivity {
 
         // Highlight original script
         String arrayOfOrginal[]=originalTranscript.split("[^a-zA-Z0-9']+");
-        String arrayOfUser[]=usrTranscript.getText().toString().split("[^a-zA-Z0-9']+");
+        String arrayOfUser[] = usrTranscript.getText().toString().split("[^a-zA-Z0-9']+");
 
 
         String colouredOriginalText="";
@@ -309,7 +308,7 @@ public class EvaluateClipActivity extends YouTubeBaseActivity {
             flag=0;
             System.out.println("\n heyyyy   "+temp);
             for (String missing:missedWords){
-                if(missing.equals(temp)){
+                if (missing.toLowerCase().equals(temp.toLowerCase())) {
                     colouredOriginalText+="<font color=\"#E72A02\">"+temp + "</font>"+" ";
                     flag=1;
                     break;
@@ -324,7 +323,7 @@ public class EvaluateClipActivity extends YouTubeBaseActivity {
             flag=0;
             System.out.println("\n heyyyy   "+temp);
             for(String wrong:wrongWords){
-                if(temp.equals(wrong)){
+                if (temp.toLowerCase().equals(wrong.toLowerCase())) {
                     colouredUserText+="<font color=\"#E72A02\">"+temp + "</font>"+" ";
                     flag=1;
                     break;
@@ -340,7 +339,12 @@ public class EvaluateClipActivity extends YouTubeBaseActivity {
         textviewOriginalTranscript.setText(Html.fromHtml(colouredOriginalText));
         textviewUsrTranscript.setText(Html.fromHtml(colouredUserText));
         linearlayoutCompareTranscripts.setVisibility(View.VISIBLE);
-        mPlayer.pause();
+        try {
+            mPlayer.pause();
+        } catch (Exception e) {
+            //java.lang.NullPointerException: Attempt to invoke interface method 'void com.google.android.youtube.player.YouTubePlayer.pause()' on a null object reference
+            //player paused before init.
+        }
         evaluateButton.setVisibility(View.GONE);
         executor.execute(new Runnable() {
             @Override

@@ -1,6 +1,5 @@
 package com.techiespace.projects.hark;
 
-import java.util.HashSet;
 import java.util.Set;
 
 public class EvaluateClip {
@@ -70,7 +69,7 @@ public class EvaluateClip {
         for (String temp : originalWords) {
             flag = 0;
             for (String temp1 : userWords) {
-                if (temp.equals(temp1))
+                if (temp.toLowerCase().equals(temp1.toLowerCase()))
                     flag = 1;
             }
             if (flag == 0) {
@@ -83,7 +82,7 @@ public class EvaluateClip {
         for(String temp:userWords){
             flag=0;
             for(String temp1:originalWords){
-                if(temp.equals(temp1))
+                if (temp.toLowerCase().equals(temp1.toLowerCase()))
                     flag=1;
             }
             if(flag==0){

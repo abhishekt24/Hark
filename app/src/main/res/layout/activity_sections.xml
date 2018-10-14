@@ -251,7 +251,8 @@
                         android:layout_centerHorizontal="true"
                         android:layout_centerVertical="true"
                         android:max="100"
-                        android:progress='@{sectionsViewModel.getAccuracyLiveData[0] != null ? (int)Double.parseDouble(sectionsViewModel.getAccuracyLiveData[0].getAccuracy().split(" ")[6]) : 0}' />
+                        android:progress='@{sectionsViewModel.getAccuracyLiveData[0] != null ? (int)Double.parseDouble(sectionsViewModel.getAccuracyLiveData[0].getAccuracy().split(" ")[6]) : 0}'
+                        android:progressTint="@color/colorPrimary" />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
