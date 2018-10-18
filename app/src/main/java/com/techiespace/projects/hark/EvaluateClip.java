@@ -62,7 +62,7 @@ public class EvaluateClip {
         int flag = 0;
 
 
-        originalTranscript =
+        originalTranscript = originalTranscript.replaceAll("[^a-zA-Z0-9]","");
         userTranscript = userTranscript.replaceAll("[^a-zA-Z0-9]", "");
 
         System.out.println("missing");
