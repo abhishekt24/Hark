@@ -150,7 +150,9 @@ public class ClipsAdapter extends RecyclerView.Adapter<ClipsAdapter.MyViewHolder
         @Override
         protected void onPostExecute(String file_url) {
             System.out.println("Downloaded");
-            pDialog.dismiss();
+            if ((pDialog != null) && pDialog.isShowing()) {
+                pDialog.dismiss();
+            }
             if (originalXMLTranscript.equals(""))
                 Toast.makeText(context, "Unable to retrieve data from Internet", Toast.LENGTH_SHORT).show();
             else {
