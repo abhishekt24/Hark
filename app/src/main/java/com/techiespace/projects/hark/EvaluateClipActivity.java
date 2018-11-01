@@ -19,6 +19,8 @@ import com.google.android.youtube.player.YouTubeBaseActivity;
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerView;
+import com.google.common.collect.HashMultiset;
+import com.google.common.collect.Multiset;
 import com.techiespace.projects.hark.db.ClipDatabase;
 import com.techiespace.projects.hark.db.ClipsDao;
 
@@ -30,11 +32,15 @@ import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
+
+//import org.apache.commons.collections4.MultiSet;
 
 public class EvaluateClipActivity extends YouTubeBaseActivity {
 
@@ -103,6 +109,7 @@ public class EvaluateClipActivity extends YouTubeBaseActivity {
         ParseXML parseXML = new ParseXML(originalXMLTranscript, startTime, stopTime);
         try {
             originalTranscript = parseXML.parseXML();
+            originalTranscript = originalTranscript.replaceAll("[^a-zA-Z0-9 ]", "");
             String[] originalTranscriptWordsArr = originalTranscript.split(" ");
             instructionWords.setText(originalTranscriptWordsArr[0] + " ... " + originalTranscriptWordsArr[originalTranscriptWordsArr.length - 1]);
         } catch (IOException e) {
@@ -289,7 +296,7 @@ public class EvaluateClipActivity extends YouTubeBaseActivity {
         textviewOriginalTranscript = findViewById(R.id.textview_original_transcript);
         linearlayoutCompareTranscripts = findViewById(R.id.linearlayout_compare_transcripts);
 
-        Set<String> missedWords = new HashSet<String>();
+        Multiset<String> missedWords = HashMultiset.create();
         Set<String> wrongWords = new HashSet<String>();
 
         EvaluateClip evaluateClip = new EvaluateClip(originalTranscript, usrTranscript.getText().toString());
@@ -297,27 +304,55 @@ public class EvaluateClipActivity extends YouTubeBaseActivity {
         score.setText("Accuracy: " + accuracy + "%");
 
         // Highlight original script
-        String arrayOfOrginal[]=originalTranscript.split("[^a-zA-Z0-9']+");
+
+        String Orginal[] = originalTranscript.split("[^a-zA-Z0-9']+");
         String arrayOfUser[] = usrTranscript.getText().toString().split("[^a-zA-Z0-9']+");
+
+        ArrayList<String> arrayOfUsers = new ArrayList<String>();
+        for (String temp : arrayOfUser) {
+            arrayOfUsers.add(temp);
+        }
+
 
 
         String colouredOriginalText="";
         String colouredUserText="";
         int flag=0;
-        for (String temp:arrayOfOrginal){
+  /*      for (String temp:arrayOfOrginal){
             flag=0;
             System.out.println("\n heyyyy   "+temp);
             for (String missing:missedWords){
                 if (missing.toLowerCase().equals(temp.toLowerCase())) {
                     colouredOriginalText+="<font color=\"#E72A02\">"+temp + "</font>"+" ";
                     flag=1;
+                    missedWords.remove(missing);
                     break;
                 }
 
             }
             if(flag==0)
                 colouredOriginalText+=temp+" ";
+        }*/
+
+
+        for (String org_word : Orginal) {
+            flag = 0;
+            Iterator<String> iter = arrayOfUsers.iterator();
+            while (iter.hasNext()) {
+                String user_word = iter.next();
+                if (user_word.toLowerCase().equals(org_word.toLowerCase())) {
+                    iter.remove();
+                    colouredOriginalText += org_word + " ";
+                    flag = 1;
+                }
+            }
+            if (flag == 0) {
+                colouredOriginalText += "<font color=\"#E72A02\">" + org_word + "</font>" + " ";
+            }
+
+
         }
+
 
         for(String temp:arrayOfUser){
             flag=0;
