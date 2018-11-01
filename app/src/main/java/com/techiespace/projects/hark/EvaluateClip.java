@@ -1,5 +1,7 @@
 package com.techiespace.projects.hark;
 
+import com.google.common.collect.Multiset;
+
 import java.util.Set;
 
 public class EvaluateClip {
@@ -58,7 +60,7 @@ public class EvaluateClip {
         return costs[s2.length()];
     }
 
-    double evaluate(Set<String> missedWords,Set<String> wrongWords) {
+    double evaluate(Multiset<String> missedWords, Set<String> wrongWords) {
         int flag = 0;
 
 
@@ -66,7 +68,7 @@ public class EvaluateClip {
         userTranscript = userTranscript.replaceAll("[^a-zA-Z0-9]", "");
 
         System.out.println("missing");
-        for (String temp : originalWords) {
+/*        for (String temp : originalWords) {
             flag = 0;
             for (String temp1 : userWords) {
                 if (temp.toLowerCase().equals(temp1.toLowerCase()))
@@ -76,7 +78,7 @@ public class EvaluateClip {
                 System.out.print(temp+"   ");
                 missedWords.add(temp);
             }
-        }
+        }*/
 
         System.out.println("wrong ");
         for(String temp:userWords){
