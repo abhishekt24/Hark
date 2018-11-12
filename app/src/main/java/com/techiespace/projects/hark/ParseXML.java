@@ -26,6 +26,8 @@ public class ParseXML {
     String parseXML() throws IOException, XmlPullParserException {
         parse(str);
         finalTranscript = finalTranscript.replaceAll("\\(.*\\)", "");
+        finalTranscript = finalTranscript.replaceAll("\\[.*\\]", "");
+
         finalTranscript = finalTranscript.replaceAll("&#39;", "'");
         finalTranscript = finalTranscript.replaceAll("&quot;", "\"");
         //finalTranscript = finalTranscript.replaceAll("\\n", " "); //TODO: Check for videos having \n in transcript
