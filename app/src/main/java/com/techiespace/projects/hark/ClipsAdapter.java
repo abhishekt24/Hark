@@ -54,6 +54,18 @@ public class ClipsAdapter extends RecyclerView.Adapter<ClipsAdapter.MyViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull final MyViewHolder holder, int position) {
+        String[] accuracyArray = clipsList.get(holder.getAdapterPosition()).getAccuracy().split(" ");
+        String accuracyOfTest = accuracyArray[7];
+        holder.binding.textviewComplete.setImageResource(0);    //Imp: Without this line some listview items unintentionally get tick marks untill refreshed.
+        for (int i = 1; i < accuracyArray.length; i++) {
+            if (Float.parseFloat(accuracyArray[i]) > 0) {
+                holder.binding.textviewComplete.setImageResource(R.drawable.ic_baseline_done_24px);
+                break;
+            }
+        }
+        if (Float.parseFloat(accuracyOfTest) > 50)
+            holder.binding.textviewComplete.setImageResource(R.drawable.ic_baseline_done_all_24px);
+
         Clips clips = clipsList.get(position);
         holder.bind(clips);
         holder.itemView.setOnClickListener(new View.OnClickListener() {

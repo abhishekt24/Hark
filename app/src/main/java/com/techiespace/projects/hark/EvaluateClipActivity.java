@@ -109,7 +109,8 @@ public class EvaluateClipActivity extends YouTubeBaseActivity {
         ParseXML parseXML = new ParseXML(originalXMLTranscript, startTime, stopTime);
         try {
             originalTranscript = parseXML.parseXML();
-            originalTranscript = originalTranscript.replaceAll("[^a-zA-Z0-9 ]", "");
+            originalTranscript = originalTranscript.replaceAll("\n", " ");
+            originalTranscript = originalTranscript.replaceAll("[^a-zA-Z0-9 .,]", "");
             String[] originalTranscriptWordsArr = originalTranscript.split(" ");
             instructionWords.setText(originalTranscriptWordsArr[0] + " ... " + originalTranscriptWordsArr[originalTranscriptWordsArr.length - 1]);
         } catch (IOException e) {
@@ -305,7 +306,7 @@ public class EvaluateClipActivity extends YouTubeBaseActivity {
 
         // Highlight original script
 
-        String Orginal[] = originalTranscript.split("[^a-zA-Z0-9']+");
+        String Orginal[] = originalTranscript.split("[^a-zA-Z0-9.,']+");
         String arrayOfUser[] = usrTranscript.getText().toString().split("[^a-zA-Z0-9']+");
 
         ArrayList<String> arrayOfUsers = new ArrayList<String>();
@@ -340,10 +341,11 @@ public class EvaluateClipActivity extends YouTubeBaseActivity {
             Iterator<String> iter = arrayOfUsers.iterator();
             while (iter.hasNext()) {
                 String user_word = iter.next();
-                if (user_word.toLowerCase().equals(org_word.toLowerCase())) {
+                if (user_word.toLowerCase().equals(org_word.toLowerCase().replaceAll("\\.,", ""))) {
                     iter.remove();
                     colouredOriginalText += org_word + " ";
                     flag = 1;
+                    break;
                 }
             }
             if (flag == 0) {
