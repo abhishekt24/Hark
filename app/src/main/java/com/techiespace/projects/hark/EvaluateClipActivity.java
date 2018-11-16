@@ -341,7 +341,7 @@ public class EvaluateClipActivity extends YouTubeBaseActivity {
             Iterator<String> iter = arrayOfUsers.iterator();
             while (iter.hasNext()) {
                 String user_word = iter.next();
-                if (user_word.toLowerCase().equals(org_word.toLowerCase().replaceAll("\\.,", ""))) {
+                if (user_word.toLowerCase().equals(org_word.toLowerCase().replaceAll("\\.|,", ""))) {
                     iter.remove();
                     colouredOriginalText += org_word + " ";
                     flag = 1;
