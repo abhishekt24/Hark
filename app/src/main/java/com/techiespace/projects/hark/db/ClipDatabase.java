@@ -58,32 +58,24 @@ public abstract class ClipDatabase extends RoomDatabase {
                     new Clips("pcF6IRpe-Og", "Halima Aden", "1", "Rookie", "--", "Female", "13592 29191 32255 39958 43250 53920 53945 61572 61596 69474 71716 78414 80326 98911", "0 0 0 0 0 0 0 0"),
                     new Clips("24Tzq9sdTas", "Yukiko Nakayama", "1", "Rookie", "--", "Female", "19072 29603 30642 41769 43052 55458 56605 69089 70727 81045 96974 114362 115397 150926", "0 0 0 0 0 0 0 0"),
                     new Clips("pWWBn9XXZoc", "Business - Android", "1", "Rookie", "American", "Male", "659 7958 7959 20980 23480 33390 37989 49250 55430 65430 65430 74820 79100 100090", "0 0 0 0 0 0 0 0"),
-                    new Clips("EU-eQpCqBXQ", "Domics - Buying Used Things", "1", "Rookie", "American", "Male", "5500 13360 13520 22680 22680 29460 29640 38340 38400 44980 44980 50460 50460 67800", "0 0 0 0 0 0 0 0"),
-                    new Clips("_VB39Jo8mAQ", "Adam Carroll - Money", "2", "Rookie", "--", "Male", "12170 25360 32810 41149 49030 56350 57500 65560 66920 73620 78950 88540 91450 109860", "0 0 0 0 0 0 0 0"),
                     new Clips("Ge7c7otG2mk", "Marianna Pascal", "2", "Rookie", "--", "Female", "22732 30234 30804 42631 46713 56299 58993 65038 65063 72809 81024 88816 89579 110352", "0 0 0 0 0 0 0 0"),
                     new Clips("rmeGVhhbGrM", "Mithila Palkar - Plan", "2", "Rookie", "--", "Female", "84206 91827 92318 99829 104490 113200 114431 125242 127131 140141 144334 152094 157514 184756", "0 0 0 0 0 0 0 0"),
                     new Clips("0oAJsPFH2wk", "Crystal Robello - Introvert", "2", "Rookie", "--", "Female", "9487 16225 21757 28261 28751 40394 40394 46250 46250 54266 54266 59762 60743 80785", "0 0 0 0 0 0 0 0"),
                     new Clips("hiM48j_NZOU", "Roxanne Pomerantz - Language", "2", "Rookie", "--", "Female", "12501 19263 20000 33757 34517 46154 46155 54571 59479 68803 70029 80796 80797 101275", "0 0 0 0 0 0 0 0"),
                     new Clips("arj7oStGLkU", "Tim Urban - Procrastination", "2", "Rookie", "--", "Male", "12000 19000 20000 34000 35000 50000 235000 250000 375000 402000 410000 449000 756000 834000", "0 0 0 0 0 0 0 0"),
                     new Clips("devo3kdSPQY", "How does Clutch work?", "2", "Rookie", "--", "Male", "30 10260 12730 23549 26410 32279 34090 44639 51550 58739 59019 72260 72260 96139", "0 0 0 0 0 0 0 0"),
-                    new Clips("O3kfYEo7i9U", "Business - YouTube", "2", "Rookie", "American", "Male", "8590 17890 17890 28250 28250 36550 36550 46499 46499 52499 52499 59399 59399 75780", "0 0 0 0 0 0 0 0"),
-                    new Clips("t-MTeLbrt8Y", "Infographic Show - Zombies", "2", "Rookie", "--", "Male", "160 8230 8230 16930 19160 26210 26210 32920 32920 40050 40050 45280 45280 60038", "0 0 0 0 0 0 0 0"),
-                    new Clips("2yFCyPX3kT0", "Annoying Customers", "2", "Rookie", "--", "Male", "0 6519 6520 11960 14440 19500 19500 25500 25500 29740 29740 34680 34680 49160", "0 0 0 0 0 0 0 0"),
-                    new Clips("vLaErMfgJ8Q", "Infographics - Death", "2", "Rookie", "--", "Male", "329 6229 6230 13440 14849 23009 23010 29250 29250 37360 47450 54489 54490 74399", "0 0 0 0 0 0 0 0"),
-                    new Clips("RS7IzU2VJIQ", "In a Nutshell - Plastic Pollution", "2", "Rookie", "--", "Male", "840 12040 12490 22259 23160 36239 36880 45480 46300 55200 65100 71900 72120 102259", "0 0 0 0 0 0 0 0"),
-                    new Clips("XxutY7ss1v4", "In a Nutshell - European Union", "2", "Rookie", "--", "Male", "540 10860 11940 32580 33560 40040 44520 56380 57660 63199 64220 72159 72680 93799", "0 0 0 0 0 0 0 0"),
-                    new Clips("VzPD009qTN4", "In a Nutshell - Bacteria", "2", "Rookie", "--", "Male", "1300 11160 14740 23419 28080 48300 48300 55120 55120 61320 63920 76100 76100 95119", "0 0 0 0 0 0 0 0"),
                     new Clips("rvskMHn0sqQ", "In a Nutshell - Egoistic Altruism", "2", "Rookie", "--", "Male", "1060 7920 11300 19340 20020 30660 36080 44180 44960 51740 52040 59260 59900 84480", "0 0 0 0 0 0 0 0"),
                     new Clips("f6VoaXYNx0I", "English Tutor", "2", "Rookie", "--", "Female", "99 10200 10200 18800 18800 30400 46690 57170 57170 70530 71530 80659 80659 107130", "0 0 0 0 0 0 0 0"),
                     new Clips("CAU2zx2Ri_M", "Speaking Skills", "2", "Rookie", "--", "Male", "440 12289 12289 23810 23810 35579 35579 47350 47350 61170 69030 79400 79400 100369", "0 0 0 0 0 0 0 0"),
                     new Clips("a49RcxrJ0xY", "English learning plan", "2", "Rookie", "--", "Female", "1170 8050 11800 21779 28029 38350 41049 52468 52469 60350 60350 70280 70280 93290", "0 0 0 0 0 0 0 0"),
+                    new Clips("5pW2b1vwwf4", "Andrea Pennington - Become who you are", "2", "Rookie", "--", "Female", "15128 24761 25127 36430 39342 47334 51498 60046 60462 69137 69484 76210 80796 104705", "0 0 0 0 0 0 0 0"),
                     new Clips("3J-cYxxHQGQ", "Sadhguru - Stress", "2", "Rookie", "--", "Male", "5830 12809 12809 19580 21189 36840 37480 50369 51280 67019 67360 78900 79540 87029", "0 0 0 0 0 0 0 0"));
 
             //Beginner L3,4
             clipsDao.insertAll(
                     new Clips("5qzy1fHYQNg", "Fred Krupp", "3", "Beginner", "--", "Male", "13230 21815 26712 36053 42046 49768 50498 59260 59284 68442 77592 86072 92673 118345", "0 0 0 0 0 0 0 0"),
+                    new Clips("EU-eQpCqBXQ", "Domics - Buying Used Things", "3", "Beginner", "American", "Male", "5500 13360 13520 22680 22680 29460 29640 38340 38400 44980 44980 50460 50460 67800", "0 0 0 0 0 0 0 0"),
                     new Clips("tGdsOXZpyWE", "Tasha Eurich", "3", "Beginner", "--", "Female", "12104 21853 33321 40243 44651 52973 53210 61894 62259 70289 70454 77972 78509 100499", "0 0 0 0 0 0 0 0"),
-                    new Clips("5pW2b1vwwf4", "Andrea Pennington - Become who you are", "3", "Beginner", "--", "Female", "15128 24761 25127 36430 39342 47334 51498 60046 60462 69137 69484 76210 80796 104705", "0 0 0 0 0 0 0 0"),
                     new Clips("Bg_Q7KYWG1g", "Rick Rigsby - Dropout", "3", "Beginner", "--", "Male", "6114 17285 17285 27747 29623 38960 38960 48073 50436 57478 60461 68989 72759 88303", "0 0 0 0 0 0 0 0"),
                     new Clips("w-HYZv6HzAs", "Dr. Ivan Joseph - Self-confidence", "3", "Beginner", "--", "Male", "6955 12109 12109 18869 18870 24298 26085 31369 31370 36863 36863 42620 42620 66267", "0 0 0 0 0 0 0 0"),
                     new Clips("MY5SatbZMAo", "Mariana Atencio", "3", "Beginner", "--", "Female", "9070 19919 19999 29429 37740 46350 56649 63838 74850 82050 82050 89539 90279 116530", "0 0 0 0 0 0 0 0"),
@@ -100,13 +92,19 @@ public abstract class ClipDatabase extends RoomDatabase {
                     new Clips("A-QgGXbDyR0", "Netta Schramm - Perpetual motion machines", "4", "Beginner", "American", "Male", "8306 19996 19996 30217 30217 37566 46737 57371 57371 65470 65470 72829 76250 97440", "0 0 0 0 0 0 0 0"),
                     new Clips("YV8TT9LRBrY", "Elizabeth Cox - Is fire a solid, a liquid, or a gas?", "3", "Beginner", "American", "Male", "7017 14437 17107 25938 25938 33068 35418 43418 47368 55988 55988 68558 73378 99658", "0 0 0 0 0 0 0 0"),
                     new Clips("ao8L-0nSYzg", "Addiction", "3", "Beginner", "--", "Male", "643 7446 10225 17904 20449 28071 35128 42023 42483 51932 52582 59502 60272 80274", "0 0 0 0 0 0 0 0"),
-                    new Clips("lrEkYscgbqE", "Jawaharlal Nehru", "4", "Beginner", "--", "Male", "14840 32890 32890 56210 64930 79040 80360 93180 95860 105159 106840 124100 127529 158239", "0 0 0 0 0 0 0 0")
+                    new Clips("lrEkYscgbqE", "Jawaharlal Nehru", "4", "Beginner", "--", "Male", "14840 32890 32890 56210 64930 79040 80360 93180 95860 105159 106840 124100 127529 158239", "0 0 0 0 0 0 0 0"),
+                    new Clips("_VB39Jo8mAQ", "Adam Carroll - Money", "4", "Beginner", "--", "Male", "12170 25360 32810 41149 49030 56350 57500 65560 66920 73620 78950 88540 91450 109860", "0 0 0 0 0 0 0 0")
+
             );
             //Intermediate L5,6,7
             clipsDao.insertAll(
+                    new Clips("VzPD009qTN4", "In a Nutshell - Bacteria", "5", "Intermediate", "--", "Male", "1300 11160 14740 23419 28080 48300 48300 55120 55120 61320 63920 76100 76100 95119", "0 0 0 0 0 0 0 0"),
                     new Clips("5KyI9zhYA10", "Simon Sinek", "5", "Intermediate", "American", "Male", "820 9480 48410 63390 232049 241590 267270 273870 302310 311520 399050 409780 447880 469340", "0 0 0 0 0 0 0 0"),
                     new Clips("5EPLOj7N1A4", "Will Smith - Life", "5", "Intermediate", "American", "Male", "0 7168 7870 13380 13509 25140 25840 30269 46210 58349 58719 72928 75549 99750", "0 0 0 0 0 0 0 0"),
                     new Clips("yKzm2AyoZjI", "Elizabeth Olsen & Jimmy Fallon", "5", "Intermediate", "American", "Female", "30896 37270 39004 46011 49014 52885 52885 58591 58591 65698 65698 69836 78544 100232", "0 0 0 0 0 0 0 0"),
+                    new Clips("vLaErMfgJ8Q", "Infographics - Death", "5", "Intermediate", "--", "Male", "329 6229 6230 13440 14849 23009 23010 29250 29250 37360 47450 54489 54490 74399", "0 0 0 0 0 0 0 0"),
+                    new Clips("RS7IzU2VJIQ", "In a Nutshell - Plastic Pollution", "5", "Intermediate", "--", "Male", "840 12040 12490 22259 23160 36239 36880 45480 46300 55200 65100 71900 72120 102259", "0 0 0 0 0 0 0 0"),
+                    new Clips("XxutY7ss1v4", "In a Nutshell - European Union", "5", "Intermediate", "--", "Male", "540 10860 11940 32580 33560 40040 44520 56380 57660 63199 64220 72159 72680 93799", "0 0 0 0 0 0 0 0"),
                     new Clips("y9c8oZ49pFc", "Veritasium - Shadows", "5", "Intermediate", "American", "Male", "3160 12900 14900 22840 23060 31600 35760 44780 45020 53569 54120 60140 60320 77920", "0 0 0 0 0 0 0 0"),
                     new Clips("0POHnKF2pH4", "Ellen - 5 year old", "5", "Intermediate", "--", "Female", "260 8370 8370 13480 16420 24991 28620 35274 41650 47710 47710 54325 56345 73826", "0 0 0 0 0 0 0 0"),
                     new Clips("uiqVRv9OMP0", "Trevor Noah- Stephen Colbart", "5", "Intermediate", "--", "Male", "3069 10577 10577 33066 33066 41241 41241 46346 46346 50683 52919 62562 66032 83550", "0 0 0 0 0 0 0 0"),
@@ -117,6 +115,9 @@ public abstract class ClipDatabase extends RoomDatabase {
                     new Clips("v76B8GUYflk", "Trevor Noah", "6", "Intermediate", "--", "Male", "4060 11940 13440 20550 66720 72040 72040 79439 85689 97400 97400 102500 108450 112688", "0 0 0 0 0 0 0 0"),
                     new Clips("gkjW9PZBRfk", "Emma Watson - HeForShe", "6", "Intermediate", "--", "Female", "0 6600 6600 15559 15560 27560 27600 35320 53740 67280 68960 78400 79580 104080", "0 0 0 0 0 0 0 0"),
                     new Clips("lqbL-UhhyPk", "My Battle With Anorexia", "6", "Intermediate", "--", "Male", "7717 17869 22521 32080 32081 42627 46618 54419 56386 63284 63285 74956 74957 92500", "0 0 0 0 0 0 0 0"),
+                    new Clips("O3kfYEo7i9U", "Business - YouTube", "6", "Intermediate", "American", "Male", "8590 17890 17890 28250 28250 36550 36550 46499 46499 52499 52499 59399 59399 75780", "0 0 0 0 0 0 0 0"),
+                    new Clips("2yFCyPX3kT0", "Annoying Customers", "6", "Intermediate", "--", "Male", "0 6519 6520 11960 14440 19500 19500 25500 25500 29740 29740 34680 34680 49160", "0 0 0 0 0 0 0 0"),
+                    new Clips("t-MTeLbrt8Y", "Infographic Show - Zombies", "6", "Intermediate", "--", "Male", "160 8230 8230 16930 19160 26210 26210 32920 32920 40050 40050 45280 45280 60038", "0 0 0 0 0 0 0 0"),
                     new Clips("jOJLx4Du3vU", "Roger Frampton", "6", "Intermediate", "--", "Male", "7402 15773 15773 23754 24644 32115 33127 42585 43555 54249 54865 60292 60722 84536", "0 0 0 0 0 0 0 0")
             );
             //Advanced L8,9
