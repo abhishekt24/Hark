@@ -10,4 +10,5 @@
     <string name="instruction3">• Tap on the video to toggle play/pause.</string>
     <string name="instruction4">• Use the [img src=ic_replay_10_black_24dp/][img src=ic_replay_5_black_24dp/][img src=ic_forward_5_black_24dp/][img src=ic_forward_10_black_24dp/] buttons to navigate through the video.</string>
     <string name="instruction5">• Evaluate to check your accuracy.</string>
+    <string name="title_activity_tutorial">Tutorial</string>
 </resources>

@@ -36,8 +36,13 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.action_settings: {
+            /*case R.id.action_settings: {
                 Intent intent = new Intent(this, SettingsActivity.class);
+                startActivity(intent);
+                break;
+            }*/
+            case R.id.action_tutorial: {
+                Intent intent = new Intent(this, TutorialActivity.class);
                 startActivity(intent);
                 break;
             }
