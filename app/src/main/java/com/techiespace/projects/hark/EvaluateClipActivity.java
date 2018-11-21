@@ -110,7 +110,7 @@ public class EvaluateClipActivity extends YouTubeBaseActivity {
         try {
             originalTranscript = parseXML.parseXML();
             originalTranscript = originalTranscript.replaceAll("\n", " ");
-            originalTranscript = originalTranscript.replaceAll("[^a-zA-Z0-9 .,]", "");
+            originalTranscript = originalTranscript.replaceAll("[^a-zA-Z0-9 .,']", "");
             String[] originalTranscriptWordsArr = originalTranscript.split(" ");
             instructionWords.setText(originalTranscriptWordsArr[0] + " ... " + originalTranscriptWordsArr[originalTranscriptWordsArr.length - 1]);
         } catch (IOException e) {
@@ -358,7 +358,6 @@ public class EvaluateClipActivity extends YouTubeBaseActivity {
 
         for(String temp:arrayOfUser){
             flag=0;
-            System.out.println("\n heyyyy   "+temp);
             for(String wrong:wrongWords){
                 if (temp.toLowerCase().equals(wrong.toLowerCase())) {
                     colouredUserText+="<font color=\"#E72A02\">"+temp + "</font>"+" ";
