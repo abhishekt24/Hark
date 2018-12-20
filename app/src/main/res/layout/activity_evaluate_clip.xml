@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -19,8 +20,15 @@
     </com.google.android.youtube.player.YouTubePlayerView>
 
     <ScrollView
+        android:id="@+id/scrollView2"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/eval_bottom_ad"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/youtubePlayerView"
+        app:layout_constraintVertical_bias="0.0">
 
         <android.support.constraint.ConstraintLayout
             android:id="@+id/constraint_layout_evaluate_clip"
@@ -66,11 +74,11 @@
                     android:layout_marginLeft="8dp"
                     android:layout_marginTop="8dp"
                     android:layout_weight="1"
-                    android:gravity="center"
-                    android:textColor="@color/secondary_text"
                     android:fontFamily="sans-serif-black"
-                    android:textStyle="bold"
-                    android:text="00:00" />
+                    android:gravity="center"
+                    android:text="00:00"
+                    android:textColor="@color/secondary_text"
+                    android:textStyle="bold" />
 
                 <Button
                     android:id="@+id/button_time_plus_five"
@@ -185,10 +193,10 @@
                 android:layout_marginRight="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
+                android:background="@color/colorPrimaryDark"
+                android:fontFamily="sans-serif-black"
                 android:onClick="evaluate"
                 android:text="Evaluate"
-                android:fontFamily="sans-serif-black"
-                android:background="@color/colorPrimaryDark"
                 android:textColor="@color/primary_light"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -221,8 +229,8 @@
                 android:layout_marginRight="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
-                android:text="Type what you hear from "
                 android:fontFamily="sans-serif-black"
+                android:text="Type what you hear from "
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.502"
                 app:layout_constraintStart_toStartOf="parent"
@@ -237,8 +245,8 @@
                 android:layout_marginRight="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
-                android:text="Error! Please restart the app."
                 android:fontFamily="sans-serif-black"
+                android:text="Error! Please restart the app."
                 android:textColor="@android:color/holo_red_dark"
                 android:textStyle="italic"
                 app:layout_constraintEnd_toStartOf="@+id/imageview_pro_tip"
@@ -252,10 +260,10 @@
                 android:layout_marginLeft="8dp"
                 android:layout_marginStart="8dp"
                 android:onClick="showInstructions"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textview_instruction"
                 android:src="@android:drawable/ic_menu_info_details"
-                android:visibility="visible" />
+                android:visibility="visible"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textview_instruction" />
 
             <ImageView
                 android:id="@+id/imageview_pro_tip"
@@ -272,4 +280,17 @@
         </android.support.constraint.ConstraintLayout>
     </ScrollView>
 
-</LinearLayout>
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/eval_bottom_ad"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        ads:adSize="BANNER"
+        ads:adUnitId="ca-app-pub-3457327876925733/6719774680"
+        ads:layout_constraintTop_toTopOf="parent"
+        ads:layout_constraintVertical_bias="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"></com.google.android.gms.ads.AdView>
+
+</android.support.constraint.ConstraintLayout>

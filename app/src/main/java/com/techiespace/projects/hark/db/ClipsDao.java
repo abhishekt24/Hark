@@ -16,7 +16,7 @@ public interface ClipsDao {
 /*    @Query("SELECT * FROM Clips")
     LiveData<List<Clips>> getAllClipsLiveData();*/
 
-    @Query("SELECT * FROM Clips WHERE difficulty = :difficulty")
+    @Query("SELECT * FROM Clips WHERE difficulty = :difficulty ORDER BY level")
     LiveData<List<Clips>> getClipsLiveDataByLevel(String difficulty);
 
     @Query("DELETE FROM Clips")

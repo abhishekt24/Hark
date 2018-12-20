@@ -8,6 +8,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+
+
 public class MainActivity extends AppCompatActivity {
 
     public RecyclerView recyclerViewMain;
@@ -22,6 +27,13 @@ public class MainActivity extends AppCompatActivity {
         recyclerViewMain = findViewById(R.id.recyclerview_main);
         recyclerViewMain.setLayoutManager(new LinearLayoutManager(this));
         recyclerViewMain.setAdapter(mainAdapter);
+
+        MobileAds.initialize(this, "ca-app-pub-3457327876925733~3853938198");
+        AdView adView = findViewById(R.id.main_bottom_ad);
+        AdRequest adRequest = new AdRequest.Builder()
+                .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+                .build();
+        adView.loadAd(adRequest);
 
 //        Toolbar myToolbar = findViewById(R.id.too);
 //        setSupportActionBar(myToolbar);

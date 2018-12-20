@@ -15,6 +15,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 import com.google.android.youtube.player.YouTubeBaseActivity;
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
@@ -118,6 +121,12 @@ public class EvaluateClipActivity extends YouTubeBaseActivity {
         } catch (XmlPullParserException e) {
             e.printStackTrace();
         }
+
+        MobileAds.initialize(this, "ca-app-pub-3457327876925733~3853938198");
+        AdView adView = findViewById(R.id.eval_bottom_ad);
+        AdRequest adRequest = new AdRequest.Builder()
+                .build();
+        adView.loadAd(adRequest);
         //Download transcript
         //new DownloadFileFromURL().execute();
     }
